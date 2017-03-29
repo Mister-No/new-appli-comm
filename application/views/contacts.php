@@ -44,26 +44,29 @@
                     </tr>
                   </thead>
                   <tbody>
-										<tr>
 										<?php foreach ($result as $row) {
-											echo '<td><a href="">' . $row->nom . $row->prenom . '</a></td>';
+											echo '<tr>
+															<td>
+																<a href="">' . $row->nom . ' ' . $row->prenom . '</a>
+															</td>
+															<td>
+				                        <div class="">' . $row->titre . '</div>
+				                      </td>
+															<td>' . $row->raison_sociale . '</td>
+															<td>
+																<a href="mailto:"></a>
+															</td>
+															<td>
+																<div class="btn-group">
+																	<a class="btn btn-success" href="">Modifier</a>
+																</div>
+																<div class="btn-group">
+																	 <a href="#" class="btn btn-success">Supprimer</a>
+																</div>
+															</td>
+				                    </tr>
+											';
 										} ?>
-
-                      <td><a href="">nom prenom</a></td>
-                      <td>
-                        <div class="hidden"></div>
-                      </td>
-                      <td>raison_sociale</td>
-                      <td><a href="mailto:"></a></td>
-                      <td>
-                        <div class="btn-group">
-                          <a class="btn btn-success" href="">Modifier</a>
-                        </div>
-												<div class="btn-group">
-													 <a href="#" class="btn btn-success">Supprimer</a>
-												</div>
-                      </td>
-                    </tr>
                   </tbody>
                   <tfoot>
                     <tr>
