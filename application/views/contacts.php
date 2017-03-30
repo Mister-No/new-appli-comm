@@ -49,12 +49,10 @@
 															<td>
 																<a href="">' . $row->nom . ' ' . $row->prenom . '</a>
 															</td>
-															<td>
-				                        <div class="">' . $row->titre . '</div>
-				                      </td>
+															<td>' . $row->nom .  '</td>
 															<td>' . $row->raison_sociale . '</td>
 															<td>
-																<a href="mailto:"></a>
+																<a href="mailto:' . $row->email . '">' . $row->email . '</a>
 															</td>
 															<td>
 																<div class="btn-group">
