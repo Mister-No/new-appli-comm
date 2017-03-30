@@ -14,13 +14,14 @@ class My_contacts extends CI_Model {
     $query = $this->db->get();
 
     return $query->result();
+
   }
 
   function get_cat_total_by_id($id){
 
-    $this->db->select('categorie.titre');
+    $this->db->select('cat.titre');
     $this->db->from('contacts_cat');
-    $this->db->join('categorie', 'categorie.id = contacts_cat.id_cat', 'LEFT');
+    $this->db->join('categorie AS cat', 'cat.id_cat = contacts_cat.id_cat', 'LEFT');
     $this->db->where("contacts_cat.id_contact = $id");
 
     $query = $this->db->get();

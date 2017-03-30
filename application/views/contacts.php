@@ -44,15 +44,17 @@
                     </tr>
                   </thead>
                   <tbody>
+
 										<?php foreach ($result as $row) {
+
 											echo '<tr>
 															<td>
-																<a href="">' . $row->nom . ' ' . $row->prenom . '</a>
+																<a href="">' . $row['nom'] . ' ' . $row['prenom'] . '</a>
 															</td>
-															<td>' . $row->nom .  '</td>
-															<td>' . $row->raison_sociale . '</td>
+															<td>' . $row['categorie'] . '</td>
+															<td>' . $row['raison_sociale'] . '</td>
 															<td>
-																<a href="mailto:' . $row->email . '">' . $row->email . '</a>
+																<a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a>
 															</td>
 															<td>
 																<div class="btn-group">
@@ -62,8 +64,8 @@
 																	 <a href="#" class="btn btn-success">Supprimer</a>
 																</div>
 															</td>
-				                    </tr>
-											';
+				                    </tr>';
+
 										} ?>
                   </tbody>
                   <tfoot>
