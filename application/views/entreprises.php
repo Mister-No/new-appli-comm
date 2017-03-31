@@ -40,22 +40,24 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><a href=""></a></td>
-                    <td>tel</td>
-                    <td>email</td>
-                    <td>site_web</td>
-                    <td>cp</td>
-                    <td>ville</td>
-                    <td>
-											<div class="btn-group">
-												<a class="btn btn-success" href="">Modifier</a>
-											</div>
-											<div class="btn-group">
-												 <a href="#" class="btn btn-success">Supprimer</a>
-											</div>
-                    </td>
-                  </tr>
+									<?php foreach ($result as $row) {
+										echo '<tr>
+														<td><a href="">' . $row->raison_sociale . '</a></td>
+														<td>' . $row->tel . '</td>
+														<td>' . $row->email . '</td>
+														<td>' . $row->site_web . '</td>
+														<td>' . $row->cp . '</td>
+														<td>' . $row->ville . '</td>
+														<td>
+															<div class="btn-group">
+																<a class="btn btn-success" href="">Modifier</a>
+															</div>
+															<div class="btn-group">
+																 <a href="#" class="btn btn-success">Supprimer</a>
+															</div>
+														</td>
+													</tr>';
+									} ?>
                   </tbody>
                   <tfoot>
                     <tr>

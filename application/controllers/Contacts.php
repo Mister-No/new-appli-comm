@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Contacts extends CI_Controller
-
-{
+class Contacts extends CI_Controller  {
 
   public function index()
 	{
@@ -29,7 +27,7 @@ class Contacts extends CI_Controller
               }
 
             $tempTextCat = substr($tempTextCat_all, 0, -3);
-            $tempTextCat = (strlen($tempTextCat) > 150) ? substr($tempTextCat,0,150). ' ... ' : $tempTextCat;
+            $tempTextCat = (strlen($tempTextCat) > 80) ? substr($tempTextCat,0,80). ' ... ' : $tempTextCat;
 
             $temp = array (
                 'id_cont' => $row->id_cont,
@@ -50,6 +48,46 @@ class Contacts extends CI_Controller
 
 			    $this->load->view('header', $data);
 	        $this->load->view('contacts');
+	        $this->load->view('footer');
+
+    	/*} else {
+        	$this->load->view('login');
+    	}*/
+	}
+
+  public function erreur()
+  {
+    if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->view('header');
+          $this->load->view('contacts_erreur');
+          $this->load->view('footer');
+
+      } else {
+          $this->load->view('login');
+      }
+  }
+
+  public function ajouter()
+	{
+
+		//if ($_SESSION["is_connect"] == TRUE){
+
+					$this->load->model('My_entreprises');
+					$this->load->model('My_categories');
+
+	        $result_cat = $this->My_categories->get_all_cat();
+	        $toto = $this->My_entreprises->get_all_ent();
+
+	        $data = array(
+	            "result_cat" => $result_cat,
+	            "result_ent" => $result_ent,
+	        );
+
+
+
+					$this->load->view('header', $data);
+	        $this->load->view('contacts_ajouter');
 	        $this->load->view('footer');
 
     	/*} else {
