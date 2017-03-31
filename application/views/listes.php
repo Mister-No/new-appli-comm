@@ -32,25 +32,28 @@
 		                <tr class="replace-inputs">
 		                  <th>Titre</th>
 		                  <th>Catégories</th>
-		                  <th>Nbr Email</th>
+		                  <th>Nombre Email</th>
 		                  <th>Actions</th>
 		                </tr>
 		              </thead>
 		              <tbody>
-		                <tr>
-		                  <td><a href="">row titre</a></td>
-		                  <td>category</td>
-		                  <td>nbre email</td>
-		                  <td>
-												<div class="btn-group">
-                          <a class="btn btn-success" href="">Modifier</a>
-                        </div>
-												<div class="btn-group">
-													 <a href="#" class="btn btn-success">Supprimer</a>
-												</div>
-		                  </td>
-		                </tr>
-		              </tbody>
+										<?php foreach ($result as $row) {
+											echo '<tr>
+															<td><a href="">' . $row['titre'] . '</a></td>
+															<td>' . $row['categories'] . '</td>
+															<td>' . $row['nbre_contact'] . '</td>
+															<td>
+																<div class="btn-group">
+																	<a class="btn btn-success" href="">Modifier</a>
+																</div>
+																<div class="btn-group">
+																	 <a href="#" class="btn btn-success">Supprimer</a>
+																</div>
+															</td>
+														</tr>';
+										}
+										 ?>
+		                </tbody>
 		              <tfoot>
 		                <tr>
 		                  <th>Titre</th>

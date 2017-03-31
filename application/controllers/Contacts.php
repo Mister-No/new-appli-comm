@@ -19,15 +19,13 @@ class Contacts extends CI_Controller  {
 
               $result_cat = $this->My_contacts->get_cat_total_by_id($row->id_cont);
 
-              $tempTextCat_all = "";
+              $cat = "";
               foreach ($result_cat as $row_cat) {
-                $tempCat = array($row_cat->titre);
-                array_push ($tempCat, $row_cat->titre);
-                $tempTextCat_all .=  $row_cat->titre." / ";
+                $cat .=  $row_cat->titre." / ";
               }
 
-            $tempTextCat = substr($tempTextCat_all, 0, -3);
-            $tempTextCat = (strlen($tempTextCat) > 80) ? substr($tempTextCat,0,80). ' ... ' : $tempTextCat;
+            $all_cat = substr($cat, 0, -3);
+            $all_cat = (strlen($all_cat) > 84) ? substr($all_cat,0,84). ' ... ' : $all_cat;
 
             $temp = array (
                 'id_cont' => $row->id_cont,
@@ -35,7 +33,7 @@ class Contacts extends CI_Controller  {
                 'prenom' => $row->prenom,
                 'raison_sociale' => $row->raison_sociale,
                 'email' => $row->email,
-                'categorie' => $tempTextCat
+                'categorie' => $all_cat
               );
 
             array_push ($result, $temp);
