@@ -110,12 +110,21 @@ class Contacts extends CI_Controller  {
           $result = $this->My_contacts->get_ent_by_id($id);
           $resultc = $this->My_contacts->get_cat_by_id($id);
 
+          $selected1 = '';
+          $selected2 = '';
+          foreach ($result as $row) {
+            if ($row->civ == 2) { $selected2 = 'selected';}
+            if ($row->civ == 1) { $selected1 = 'selected';}
+          }
+
           $data = array(
               "result" => $result,
+              "selected1" => $selected1,
+              "selected2" => $selected2,
               "result_cat" => $result_cat,
               "result_ent" => $result_ent,
               "resultc" => $resultc,
-          );
+            );
 
           $this->load->view('header', $data);
           $this->load->view('contacts_modifier');

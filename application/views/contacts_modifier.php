@@ -35,8 +35,8 @@
 			                <div class="form-group form-group-default">
 			                  <label class="control-label">Civilité :</label>
 			                  <select class="form-control" id="select_civility" name="civ" >
-			                    <option value="2">Monsieur</option>
-			                    <option value="1">Madame</option>
+			                    <option value="2" ' . $selected2 . '>Monsieur</option>
+			                    <option value="1" ' . $selected1 . '>Madame</option>
 			                  </select>
 			                </div>
 			                <div class="form-group form-group-default">
