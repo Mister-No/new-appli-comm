@@ -25,7 +25,7 @@
 		          </a>
 		        </div>
 		      </div>
-		      <form id="form1" method="post" class="validate" action="#">
+		      <form id="form1" method="post" class="validate" action="<?=base_url();?>contacts/add.html">
 		        <div class="panel-body">
 		          <div class="row">
 		            <div class="col-md-6">

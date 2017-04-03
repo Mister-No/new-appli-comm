@@ -58,7 +58,7 @@
 															</td>
 															<td>
 																<div class="btn-group">
-																	<a class="btn btn-success" href="">Modifier</a>
+																	<a class="btn btn-success" href="' . base_url() . 'contacts/modifier/' . $row['id_cont'] . '">Modifier</a>
 																</div>
 																<div class="btn-group">
 																	 <a href="#" class="btn btn-success">Supprimer</a>
@@ -67,6 +67,7 @@
 				                    </tr>';
 
 										} ?>
+
                   </tbody>
                   <tfoot>
                     <tr>

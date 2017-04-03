@@ -75,7 +75,7 @@ class Contacts extends CI_Controller  {
 					$this->load->model('My_categories');
 
 	        $result_cat = $this->My_categories->get_all_cat();
-	        $toto = $this->My_entreprises->get_all_ent();
+	        $result_ent = $this->My_entreprises->get_all_ent();
 
 	        $data = array(
 	            "result_cat" => $result_cat,
@@ -92,5 +92,142 @@ class Contacts extends CI_Controller  {
         	$this->load->view('login');
     	}*/
 	}
+
+  public function modifier()
+  {
+
+    //if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_categories');
+      $this->load->model('My_entreprises');
+      $this->load->model('My_contacts');
+
+      $id = $this->uri->segment(3, 0);
+
+          $result_cat = $this->My_categories->get_all_cat();
+          $result_ent = $this->My_entreprises->get_all_ent();
+
+          $result = $this->My_contacts->get_ent_by_id($id);
+          $resultc = $this->My_contacts->get_cat_by_id($id);
+
+          $data = array(
+              "result" => $result,
+              "result_cat" => $result_cat,
+              "result_ent" => $result_ent,
+              "resultc" => $resultc,
+          );
+
+          $this->load->view('header', $data);
+          $this->load->view('contacts_modifier');
+          $this->load->view('footer');
+
+      /*} else {
+          $this->load->view('login');
+      }*/
+  }
+
+  public function add()
+	{
+
+		//if ($_SESSION["is_connect"] == TRUE){
+
+			$this->load->model('My_contacts');
+
+			$result = $this->My_contacts->check_exist ($this->input->post('email'), $this->input->post('nom'));
+
+			if (count($result) > 0){
+
+		        redirect('contacts/erreur');
+
+		    } else {
+
+				$data = array(
+					"id_ent" 			=> $this->input->post('id_ent'),
+					"civ" 				=> $this->input->post('civ'),
+					"nom" 				=> $this->input->post('nom'),
+					"prenom" 			=> $this->input->post('prenom'),
+					"fonction" 			=> $this->input->post('fonction'),
+					"tel" 				=> $this->input->post('tel'),
+					"fax" 				=> $this->input->post('fax'),
+					"mobile" 			=> $this->input->post('mobile'),
+					"email" 			=> $this->input->post('email'),
+					"num_voie" 			=> $this->input->post('num_voie'),
+					"nom_voie" 			=> $this->input->post('nom_voie'),
+					"lieu_dit" 			=> $this->input->post('lieu_dit'),
+					"bp" 				=> $this->input->post('bp'),
+					"cp" 				=> $this->input->post('cp'),
+					"ville" 			=> $this->input->post('ville'),
+					"cedex" 			=> $this->input->post('cedex'),
+				);
+
+		        $id = $this->My_common->insert_data ("contacts", $data);
+
+		        foreach ($_POST["id_cat"] as $key => $value) {
+		        	$data =array (
+		        		"id_contact" => $id,
+		        		"id_cat" => $value,
+		        	);
+		        	$this->My_common->insert_data ("contacts_cat", $data);
+		        }
+
+		        redirect('contacts');
+		    }
+
+
+
+    	/*} else {
+        	$this->load->view('login');
+    	}*/
+
+	}
+
+  public function update()
+	{
+
+		//if ($_SESSION["is_connect"] == TRUE){
+
+			$this->load->model('My_contacts');
+
+	        $this->My_contacts->delete_ent_cat($this->input->post('id'));
+
+			$data = array(
+				"id" 				=> $this->input->post('id'),
+				"id_ent" 			=> $this->input->post('id_ent'),
+				"civ" 				=> $this->input->post('civ'),
+				"nom" 				=> $this->input->post('nom'),
+				"prenom" 			=> $this->input->post('prenom'),
+				"fonction" 			=> $this->input->post('fonction'),
+				"tel" 				=> $this->input->post('tel'),
+				"fax" 				=> $this->input->post('fax'),
+				"mobile" 			=> $this->input->post('mobile'),
+				"email" 			=> $this->input->post('email'),
+				"num_voie" 			=> $this->input->post('num_voie'),
+				"nom_voie" 			=> $this->input->post('nom_voie'),
+				"lieu_dit" 			=> $this->input->post('lieu_dit'),
+				"bp" 				=> $this->input->post('bp'),
+				"cp" 				=> $this->input->post('cp'),
+				"ville" 			=> $this->input->post('ville'),
+				"cedex" 			=> $this->input->post('cedex'),
+			);
+
+	        $this->My_common->update_data("contacts", "id", $this->input->post('id'), $data);
+
+	        foreach ($_POST["id_cat"] as $key => $value) {
+	        	$data =array (
+	        		"id_contact" => $this->input->post('id'),
+	        		"id_cat" => $value,
+	        	);
+	        	$this->My_common->insert_data ("contacts_cat", $data);
+	        }
+
+
+			redirect('contacts');
+
+    	/*} else {
+        	$this->load->view('login');
+    	}*/
+
+	}
+
 
 }
