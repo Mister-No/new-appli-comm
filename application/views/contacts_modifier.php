@@ -27,16 +27,17 @@
 		        </div>
 						<?php
 						foreach ($result as $row) {
-							echo '<form id="form1" method="post" class="validate" action="' . base_url() . 'contacts/update.html">
+							echo '<form id="form" method="post" class="validate" action="'. base_url() . 'contacts/update.html">
 			          <input type="hidden" name="id" value="' . $row->id_cont . '">
 			          <div class="panel-body">
 			            <div class="row">
 			              <div class="col-md-6">
-			                <div class="form-group form-group-default">
-			                  <label class="control-label">Civilité :</label>
-			                  <select class="form-control" id="select_civility" name="civ" >
-			                    <option value="2" ' . $selected2 . '>Monsieur</option>
-			                    <option value="1" ' . $selected1 . '>Madame</option>
+										<div class="form-group form-group-default form-group-default-select2 ">
+											<label class="">Civilité :</label>
+												<select class="full-width" data-placeholder="Choisir votre civilité" data-init-plugin="select2" id="select_civility" name="civ">
+												<option value=""></option>
+												<option value="2" ' . $civ_val2 . '>Monsieur</option>
+							          <option value="1" ' . $civ_val2 . '>Madame</option>
 			                  </select>
 			                </div>
 			                <div class="form-group form-group-default">
@@ -102,39 +103,35 @@
 		        ?>
 		          <div class="col-md-12">&nbsp;</div>
 		            <div class="col-md-6">
-		              <div class="form-group form-group-default">
-		                <label class="control-label">Entreprise de rattachement :</label>
-		                <select class="form-control" id="select_business" name="id_ent" >
-		                  <option>Business 1</option>
-		                  <option>Business 2</option>
-		                  <option>Business 3</option>
-		                  <option>Business 4</option>
+									<div class="form-group form-group-default form-group-default-select2 ">
+										<label class="">Entreprise de rattachement :</label>
+											<select class="full-width" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_business" name="id_ent" disabled>
+												<option value=""></option>
 		                </select>
 		              </div>
-		              <p>
-		                Adresse : address
-		                <br> ville...
-		                <br><br>Siret : siret
-		                <br>Tel : tel
-		                <br>Email : <a href="#">email</a>
-		                <br>Site Web : www....
-		              </p>
+									<div class="col-md-6">
+										<p>
+											Adresse : address
+											<br> ville...
+											<br><br>Siret : siret
+											<br>Tel : tel
+											<br>Email : <a href="#">email</a>
+											<br>Site Web : www....
+										</p>
+									</div>
 		            </div>
 		            <div class="col-md-6">
-		              <div class="form-group form-group-default">
-		                <label class="control-label">Catégories / Sous-Catégories :</label>
-		                <select class="form-control" multiple id="select_category" name="id_cat[]" >
-		                  <option>Category 1</option>
-		                  <option>Category 2</option>
-		                  <option>Category 3</option>
-		                  <option>Category 4</option>
+									<div class="form-group form-group-default form-group-default-select2 ">
+										<label class="">Catégories / Sous-Catégories :</label>
+											<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" multiple id="select_category" name="id_cat[]" disabled>
+												<option value=""></option>
 		                </select>
 		              </div>
 		            </div>
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
-		          <button type="submit" class="btn btn-success">MODIFIER</button>
+		          <button type="button" class="btn btn-success" id="bt_submit">MODIFIER</button>
 		        </div>
 		      </form>
 		    </div>

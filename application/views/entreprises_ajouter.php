@@ -85,28 +85,20 @@
 		                </div>
 		              </div>
 		              <div class="col-md-12">&nbsp;</div>
-		                <div class="col-md-6">
-		                  <div class="form-group form-group-default">
-		                    <label class="control-label">Entreprise de rattachement :</label>
-		                    <select class="form-control" id="select_business" name="id_parent" >
-		                      <option>Business 1</option>
-		                      <option>Business 2</option>
-		                      <option>Business 3</option>
-		                      <option>Business 4</option>
-		                    </select>
-		                  </div>
-		                </div>
-		                <div class="col-md-6">
-		                  <div class="form-group form-group-default">
-		                    <label class="control-label">Catégories / Sous-Catégories :</label>
-		                    <select class="form-control" multiple id="select_category" name="id_cat[]" >
-		                      <option>Category 1</option>
-		                      <option>Category 2</option>
-		                      <option>Category 3</option>
-		                      <option>Category 4</option>
-		                    </select>
-		                  </div>
-		              </div>
+									<div class="col-md-6">
+										<div class="form-group form-group-default form-group-default-select2 ">
+											<label class="">Entreprise de rattachement :</label>
+												<select class="full-width" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_business" name="id_parent" disabled>
+													<option value=""></option>
+			                </select>
+			              </div>
+			            </div>
+										<div class="form-group form-group-default form-group-default-select2 ">
+											<label class="">Catégories / Sous-Catégories :</label>
+												<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" multiple id="select_category" name="id_cat[]" disabled>
+													<option value=""></option>
+			                </select>
+			              </div>
 		            </div>
 		        </div>
 		        <div class="panel-footer text-right">

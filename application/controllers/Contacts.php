@@ -110,17 +110,17 @@ class Contacts extends CI_Controller  {
           $result = $this->My_contacts->get_ent_by_id($id);
           $resultc = $this->My_contacts->get_cat_by_id($id);
 
-          $selected1 = '';
-          $selected2 = '';
+          $civ_val1 = '';
+          $civ_val2 = '';
           foreach ($result as $row) {
-            if ($row->civ == 2) { $selected2 = 'selected';}
-            if ($row->civ == 1) { $selected1 = 'selected';}
+            if ($row->civ == 2) { $civ_val2 = 'selected';}
+            if ($row->civ == 1) { $civ_val1 = 'selected';}
           }
 
           $data = array(
               "result" => $result,
-              "selected1" => $selected1,
-              "selected2" => $selected2,
+              "civ_val1" => $civ_val1,
+              "civ_val2" => $civ_val2,
               "result_cat" => $result_cat,
               "result_ent" => $result_ent,
               "resultc" => $resultc,
@@ -238,5 +238,6 @@ class Contacts extends CI_Controller  {
 
 	}
 
+  
 
 }

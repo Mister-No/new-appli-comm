@@ -25,89 +25,83 @@
               </a>
             </div>
           </div>
-          <form id="form1" method="post" class="validate" action="#">
-          <input type="hidden" name="id" value="">
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Raison sociale :</label>
-                    <input type="text" class="form-control" name="raison_sociale" value="" data-validate="required" data-message-required="Veuillez saisir une Raison Sociale" placeholder="Raison sociale" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">N° Siret :</label>
-                    <input type="text" class="form-control" name="siret" value="" data-validate="required" data-message-required="Veuillez saisir un numéro de SIRET" placeholder="N° Siret" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Téléphone :</label>
-                    <input type="text" class="form-control" name="tel" value=""  placeholder="Téléphone" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Télécopie :</label>
-                    <input type="text" class="form-control" name="fax" value="" placeholder="Télécopie" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Adresse électronique :</label>
-                    <input type="text" class="form-control" name="email" value="" placeholder="Adresse électronique" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Site web :</label>
-                    <input type="text" class="form-control" name="site_web" value="" placeholder="Site web" />
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group form-group-default">
-                    <label class="control-label">N° de voie :</label>
-                    <input type="text" class="form-control" name="num_voie" value="" placeholder="N° de voie" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Nom de voie :</label>
-                    <input type="text" class="form-control" name="nom_voie" value="" placeholder="Nom de voie" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Lieu-dit :</label>
-                    <input type="text" class="form-control" name="lieu_dit" value="" placeholder="Lieu-dit" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Boîte postale :</label>
-                    <input type="text" class="form-control" name="bp" value="" placeholder="Boîte postale" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Code postal :</label>
-                    <input type="text" class="form-control" name="cp" value="" placeholder="Code postal" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Localité :</label>
-                    <input type="text" class="form-control" name="ville" value="" placeholder="Localité" />
-                  </div>
-                  <div class="form-group form-group-default">
-                    <label class="control-label">Cedex :</label>
-                    <input type="text" class="form-control" name="cedex" value="" placeholder="Cedex" />
-                  </div>
-                </div>
-                <div class="col-md-12">&nbsp;</div>
-                  <div class="col-md-6">
-                    <div class="form-group form-group-default">
-                      <label class="control-label">Entreprise de rattachement :</label>
-                      <select class="form-control" id="select_business" name="id_parent" >
-                        <option>Business 1</option>
-                        <option>Business 2</option>
-                        <option>Business 3</option>
-                        <option>Business 4</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group form-group-default">
-                    <label class="control-label">Catégories / Sous-Catégories :</label>
-                    <select class="form-control" multiple id="select_category" name="id_cat[]" >
-                      <option>Category 1</option>
-                      <option>Category 2</option>
-                      <option>Category 3</option>
-                      <option>Category 4</option>
-                    </select>
-                  </div>
-                </div>
+					<?php foreach ($result as $row) {
+						echo '<form id="form" method="post" class="validate" action="#">
+	          <input type="hidden" name="id" value="' . $row->id_ent . '">
+	            <div class="panel-body">
+	              <div class="row">
+	                <div class="col-md-6">
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Raison sociale :</label>
+	                    <input type="text" class="form-control" name="raison_sociale" value="' . $row->raison_sociale . '" data-validate="required" data-message-required="Veuillez saisir une Raison Sociale" placeholder="Raison sociale" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">N° Siret :</label>
+	                    <input type="text" class="form-control" name="siret" value="' . $row->siret . '" data-validate="required" data-message-required="Veuillez saisir un numéro de SIRET" placeholder="N° Siret" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Téléphone :</label>
+	                    <input type="text" class="form-control" name="tel" value="' . $row->tel . '"  placeholder="Téléphone" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Télécopie :</label>
+	                    <input type="text" class="form-control" name="fax" value="' . $row->fax . '" placeholder="Télécopie" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Adresse électronique :</label>
+	                    <input type="text" class="form-control" name="email" value="' . $row->email . '" placeholder="Adresse électronique" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Site web :</label>
+	                    <input type="text" class="form-control" name="site_web" value="' . $row->site_web . '" placeholder="Site web" />
+	                  </div>
+	                </div>
+	                <div class="col-md-6">
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">N° de voie :</label>
+	                    <input type="text" class="form-control" name="num_voie" value="' . $row->num_voie . '" placeholder="N° de voie" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Nom de voie :</label>
+	                    <input type="text" class="form-control" name="nom_voie" value="' . $row->nom_voie . '" placeholder="Nom de voie" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Lieu-dit :</label>
+	                    <input type="text" class="form-control" name="lieu_dit" value="' . $row->lieu_dit . '" placeholder="Lieu-dit" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Boîte postale :</label>
+	                    <input type="text" class="form-control" name="bp" value="' . $row->bp . '" placeholder="Boîte postale" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Code postal :</label>
+	                    <input type="text" class="form-control" name="cp" value="' . $row->cp . '" placeholder="Code postal" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Localité :</label>
+	                    <input type="text" class="form-control" name="ville" value="' . $row->ville . '" placeholder="Localité" />
+	                  </div>
+	                  <div class="form-group form-group-default">
+	                    <label class="control-label">Cedex :</label>
+	                    <input type="text" class="form-control" name="cedex" value="' . $row->cedex . '" placeholder="Cedex" />
+	                  </div>
+	                </div>';
+					} ?>
+              <div class="col-md-12">&nbsp;</div>
+								<div class="col-md-6">
+									<div class="form-group form-group-default form-group-default-select2 ">
+										<label class="">Entreprise de rattachement :</label>
+											<select class="full-width" data-placeholder="Choisir une entreprise" data-init-plugin="select2" id="select_business" name="id_parent" disabled>
+												<option value=""></option>
+		                </select>
+		              </div>
+		            </div>
+								<div class="form-group form-group-default form-group-default-select2 ">
+									<label class="">Catégories / Sous-Catégories :</label>
+										<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" multiple id="select_category" name="id_cat[]" disabled>
+											<option value=""></option>
+									</select>
+								</div>
               </div>
             </div>
             <div class="panel-footer text-right">

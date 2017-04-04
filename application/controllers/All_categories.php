@@ -11,13 +11,14 @@ class All_categories extends CI_Controller  {
 
 	        $result = $this->My_categories->get_all_cat();
 
-	       $data = array(
-	            "result" => $result,
-	        );
+          foreach ($result as $row) {
 
-			    /*$this->load->view('header', $data);
-	        $this->load->view('contacts');
-	        $this->load->view('footer');*/
+              $data[] = array('id' => $row->id_cat, 'text' => $row->titre);
+
+          }
+
+          header('Content-Type: application/json');
+          echo json_encode ($data);
 
     	/*} else {
         	$this->load->view('login');

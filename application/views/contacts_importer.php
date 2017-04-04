@@ -4,7 +4,7 @@
 		<div class="main-content">
 			<div class="page-title">
 				<div class="title-env">
-					<h3 >Contacts</h3>
+					<h3>Contacts</h3>
 				</div>
 				<div class="breadcrumb-env">
 					<ol class="breadcrumb bc-1" >
@@ -35,13 +35,10 @@
 		              </div>
 		            </div>
 		            <div class="col-md-6">
-		              <div class="form-group form-group-default">
-		                <label class="control-label">Catégories / Sous-Catégories :</label>
-		                <select class="form-control" multiple id="select_category" name="id_cat[]" >
-		                  <option>Category 1</option>
-		                  <option>Category 2</option>
-		                  <option>Category 3</option>
-		                  <option>Category 4</option>
+									<div class="form-group form-group-default form-group-default-select2 ">
+										<label class="">Catégories / Sous-Catégories :</label>
+											<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" id="select_category" name="id_cat[]" disabled>
+												<option value=""></option>
 		                </select>
 		              </div>
 		            </div>
