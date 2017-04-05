@@ -58,9 +58,9 @@ class My_contacts extends CI_Model {
     return $query->result();
   }
 
-  /******************************************/
-  /* SELECT UNE ENTREPRISE PAR ID CONTACT   */
-  /******************************************/
+  /************************************************/
+  /*   SELECT UNE CONTACT PAR ID AVEC ENTREPRISE  */
+  /***********************************************/
   function get_ent_by_id($id){
 
     $this->db->select('contacts.*, entreprises.siret as ent_siret, entreprises.tel as ent_tel, entreprises.fax as ent_fax, entreprises.email as ent_email, entreprises.site_web as ent_site_web, entreprises.num_voie as ent_num_voie, entreprises.nom_voie as ent_nom_voie, entreprises.lieu_dit as ent_lieu_dit, entreprises.bp as ent_bp, entreprises.cp as ent_cp, entreprises.ville as ent_ville, entreprises.cedex as ent_cedex');

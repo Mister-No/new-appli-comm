@@ -23,6 +23,11 @@
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/switchery/css/switchery.min.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>pages/css/pages-icons.css">
 <link class="main-stylesheet" rel="stylesheet" type="text/css" href="<?=base_url();?>pages/css/pages.css" />
+
+<script src="<?=base_url();?>assets/plugins/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?=base_url();?>assets/custom_js/custom_js.js?<?php echo rand (0,10000000); ?>"></script>
+
+
 <!--[if lte IE 9]>
 <link href="assets/plugins/codrops-dialogFx/dialog.ie.css" rel="stylesheet" type="text/css" media="screen" />
 <![endif]-->

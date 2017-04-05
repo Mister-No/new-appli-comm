@@ -104,9 +104,6 @@ class Contacts extends CI_Controller  {
 
       $id = $this->uri->segment(3, 0);
 
-          $result_cat = $this->My_categories->get_all_cat();
-          $result_ent = $this->My_entreprises->get_all_ent();
-
           $result = $this->My_contacts->get_ent_by_id($id);
           $resultc = $this->My_contacts->get_cat_by_id($id);
 
@@ -117,18 +114,66 @@ class Contacts extends CI_Controller  {
             if ($row->civ == 1) { $civ_val1 = 'selected';}
           }
 
+          $result_cat = '';
+
+          foreach ($resultc as $rowc) {
+            $result_cat[] = $rowc->id_cat;
+          }
+
           $data = array(
               "result" => $result,
               "civ_val1" => $civ_val1,
               "civ_val2" => $civ_val2,
               "result_cat" => $result_cat,
-              "result_ent" => $result_ent,
-              "resultc" => $resultc,
             );
 
           $this->load->view('header', $data);
           $this->load->view('contacts_modifier');
           $this->load->view('footer');
+
+      /*} else {
+          $this->load->view('login');
+      }*/
+  }
+
+  public function select_all_ent()
+	{
+		//if ($_SESSION["is_connect"] == TRUE){
+
+		$this->load->model('My_entreprises');
+
+      $result = $this->My_entreprises->get_all_ent();
+
+        foreach ($result as $row) {
+
+            $data[] = array('id' => $row->id_ent, 'text' => $row->raison_sociale);
+
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode ($data);
+
+    	/*} else {
+        	$this->load->view('login');
+    	}*/
+	}
+
+  public function select_all_cat()
+  {
+    //if ($_SESSION["is_connect"] == TRUE){
+
+    $this->load->model('My_categories');
+
+      $result = $this->My_categories->get_all_cat();
+
+      foreach ($result as $row) {
+
+          $data[] = array('id' => $row->id_cat, 'text' => $row->titre);
+
+      }
+
+      header('Content-Type: application/json');
+      echo json_encode ($data);
 
       /*} else {
           $this->load->view('login');
@@ -238,6 +283,6 @@ class Contacts extends CI_Controller  {
 
 	}
 
-  
+
 
 }

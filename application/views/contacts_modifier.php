@@ -27,6 +27,7 @@
 		        </div>
 						<?php
 						foreach ($result as $row) {
+							$id_ent = $row->id_ent;
 							echo '<form id="form" method="post" class="validate" action="'. base_url() . 'contacts/update.html">
 			          <input type="hidden" name="id" value="' . $row->id_cont . '">
 			          <div class="panel-body">
@@ -37,7 +38,7 @@
 												<select class="full-width" data-placeholder="Choisir votre civilité" data-init-plugin="select2" id="select_civility" name="civ">
 												<option value=""></option>
 												<option value="2" ' . $civ_val2 . '>Monsieur</option>
-							          <option value="1" ' . $civ_val2 . '>Madame</option>
+							          <option value="1" ' . $civ_val1 . '>Madame</option>
 			                  </select>
 			                </div>
 			                <div class="form-group form-group-default">
@@ -110,14 +111,17 @@
 		                </select>
 		              </div>
 									<div class="col-md-6">
-										<p>
-											Adresse : address
-											<br> ville...
-											<br><br>Siret : siret
-											<br>Tel : tel
-											<br>Email : <a href="#">email</a>
-											<br>Site Web : www....
-										</p>
+										<?php foreach ($result as $row) {
+										echo '<p>
+														Adresse : ' . $row->ent_num_voie . ' ' . $row->ent_nom_voie . '
+														<br>' . $row->ent_bp . ' ' . $row->ent_cp. ' ' . $row->ent_cedex . '
+														<br>' . $row->ent_lieu_dit . ' ' . $row->ent_ville . '
+														<br>Siret : ' . $row->ent_siret . '
+														<br>Tel : ' . $row->ent_tel . '
+														<br>Email : <a href="' . $row->ent_email . '">' . $row->ent_email . '</a>
+														<br>Site Web : ' . $row->ent_site_web . '
+													</p>';
+										} ?>
 									</div>
 		            </div>
 		            <div class="col-md-6">
@@ -131,10 +135,21 @@
 		          </div>
 		        </div>
 		        <div class="panel-footer text-right">
-		          <button type="button" class="btn btn-success" id="bt_submit">MODIFIER</button>
+		          <button type="submit" class="btn btn-success">MODIFIER</button>
 		        </div>
 		      </form>
 		    </div>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+	var id_ent = '<?=$id_ent?>';
+		if (id_ent != null) {
+			select_entreprise ('#select_business', id_ent);
+		}
+
+		var result_cat = <?php echo json_encode ($result_cat); ?>
+
+		select_category ('#select_category', result_cat);
+
+	</script>
