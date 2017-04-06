@@ -30,9 +30,9 @@ class My_entreprises extends CI_Model {
 	}
 
 
-	/******************************************/
-	/* SELECT UNE ENTREPRISES PAR ID           */
-	/******************************************/
+	/********************************************/
+	/* SELECT UNE ENTREPRISES PAR ID ENTREPRISE */
+	/********************************************/
 	function get_cat_by_id($id){
 
 		$this->db->select();

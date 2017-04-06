@@ -58,17 +58,18 @@ class Entreprises extends CI_Controller {
 
 			$id = $this->uri->segment(3, 0);
 
-	       /* $result_cat = $this->My_categories->get_all_cat ();
-	        $result_ent = $this->My_entreprises->get_all_ent ();*/
-
 	        $result = $this->My_entreprises->get_ent_by_id($id);
 	        $resultc = $this->My_entreprises->get_cat_by_id($id);
 
+          $result_cat = '';
+
+          foreach ($resultc as $rowc) {
+            $result_cat[] = $rowc->id_cat;
+          }
+
 	        $data = array(
 	            "result" => $result,
-	            /*"result_cat" => $result_cat,
-	            "result_ent" => $result_ent,*/
-	            "resultc" => $resultc,
+	            "result_cat" => $result_cat,
 	        );
 
 			    $this->load->view('header', $data);

@@ -98,8 +98,6 @@ class Contacts extends CI_Controller  {
 
     //if ($_SESSION["is_connect"] == TRUE){
 
-      $this->load->model('My_categories');
-      $this->load->model('My_entreprises');
       $this->load->model('My_contacts');
 
       $id = $this->uri->segment(3, 0);
@@ -130,50 +128,6 @@ class Contacts extends CI_Controller  {
           $this->load->view('header', $data);
           $this->load->view('contacts_modifier');
           $this->load->view('footer');
-
-      /*} else {
-          $this->load->view('login');
-      }*/
-  }
-
-  public function select_all_ent()
-	{
-		//if ($_SESSION["is_connect"] == TRUE){
-
-		$this->load->model('My_entreprises');
-
-      $result = $this->My_entreprises->get_all_ent();
-
-        foreach ($result as $row) {
-
-            $data[] = array('id' => $row->id_ent, 'text' => $row->raison_sociale);
-
-        }
-
-        header('Content-Type: application/json');
-        echo json_encode ($data);
-
-    	/*} else {
-        	$this->load->view('login');
-    	}*/
-	}
-
-  public function select_all_cat()
-  {
-    //if ($_SESSION["is_connect"] == TRUE){
-
-    $this->load->model('My_categories');
-
-      $result = $this->My_categories->get_all_cat();
-
-      foreach ($result as $row) {
-
-          $data[] = array('id' => $row->id_cat, 'text' => $row->titre);
-
-      }
-
-      header('Content-Type: application/json');
-      echo json_encode ($data);
 
       /*} else {
           $this->load->view('login');
@@ -283,6 +237,130 @@ class Contacts extends CI_Controller  {
 
 	}
 
+	public function importer()
+	{
+		//if ($_SESSION["is_connect"] == TRUE){
 
+			$this->load->model('My_categories');
+
+      $result_cat = $this->My_categories->get_all_cat ();
+
+      $data = array(
+          "result_cat" => $result_cat,
+      );
+
+			$this->load->view('header', $data);
+	        $this->load->view('contacts_importer');
+	        $this->load->view('footer');
+
+  	/*} else {
+      	$this->load->view('login');
+  	}*/
+	}
+
+
+	public function importer_save()
+	{
+		//if ($_SESSION["is_connect"] == TRUE){
+
+			$this->load->model('My_contacts');
+
+			$this->load->library('upload');
+			$this->load->helper('url');
+			$this->load->helper('text');
+			$this->load->helper('directory');
+
+			$config['upload_path'] = 'temp/';
+			$config['allowed_types'] = 'xls|xlsx';
+			$config['max_size'] = '110000';
+			$config['overwrite'] = true;
+			$this->upload->initialize($config);
+
+			$file = "temp.xlsx";
+
+			if ($_FILES["fichier"]["name"] != ""){
+				$config['file_name'] = $file;
+				$this->upload->initialize($config);
+				if (!$this->upload->do_upload("fichier")){
+					echo "erreur 1";
+				} else {
+
+					require(APPPATH.'libraries/PHPExcel.php');
+
+					$objReader = PHPExcel_IOFactory::createReader('Excel2007');
+					$objReader->setReadDataOnly(true);
+					$objPHPExcel = $objReader->load("temp/temp.xlsx");
+					$objWorksheet = $objPHPExcel->setActiveSheetIndex(0)->toArray(null,true,true,true);
+
+					foreach ($objWorksheet as $row) {
+
+						if ($row["B"] != "Nom" && $row["B"] != ""){
+
+							$email 	= $row["H"];
+							$nom 	= $row["B"];
+
+							// On verifie si le contact est déjà dans la base :
+							$result = $this->My_contacts->check_exist ($email, $nom);
+
+							if (count($result) > 0){
+
+								$id_contact = $result[0]->id;
+
+								// si il est dans la base on verifie si il est dans la categorie
+								if (isset($_POST["id_cat"])){
+
+									foreach ($_POST["id_cat"] as $key => $value) {
+										$result_contact_cat = $this->My_contacts->check_contact_cat($value, $id_contact);
+										if (count ($result_contact_cat) == 0){
+
+							        	$data =array (
+							        		"id_contact" => $id_contact,
+							        		"id_cat" => $value,
+							        	);
+							        	$this->My_common->insert_data ("contacts_cat", $data);
+
+										}
+									}
+								}
+
+							} else {
+
+								// Si il est pas dans la base on l'ajoute avec le categorie
+	  						$data = array (
+	  							"civ" 		=> $row["A"],
+	  							"nom" 		=> $row["B"],
+	  							"prenom" 	=> $row["C"],
+	  							"fonction" 	=> $row["D"],
+	  							"tel" 		=> $row["E"],
+	  							"fax" 		=> $row["F"],
+	  							"mobile" 	=> $row["G"],
+	  							"email" 	=> $row["H"],
+	  						);
+
+	  						$id = $this->My_common->insert_data ("contacts", $data);
+
+							if (isset($_POST["id_cat"])){
+				        foreach ($_POST["id_cat"] as $key => $value) {
+				        	$data =array (
+				        		"id_contact" => $id,
+				        		"id_cat" => $value,
+				        	);
+				        	$this->My_common->insert_data ("contacts_cat", $data);
+				        }
+				    	}
+						}
+					}
+				}
+			}
+		} else {
+			echo "erreur";
+		}
+
+		redirect (base_url()."contacts");
+
+  	/*} else {
+      	$this->load->view('login');
+  	}*/
+	}
 
 }

@@ -112,3 +112,18 @@
       </div>
     </div>
   </div>
+	<script type="text/javascript">
+
+	<?php $id_ent = $row->id_ent; ?>
+
+	var id_ent = '<?=$id_ent?>';
+	var urlSelect = 'select_all_ent';
+
+	select ('#select_business', id_ent, urlSelect);
+
+	var id_ent = <?php echo json_encode ($result_cat); ?>;
+	var urlSelect = 'select_all_cat';
+
+	select ('#select_category', id_ent, urlSelect);
+
+	</script>

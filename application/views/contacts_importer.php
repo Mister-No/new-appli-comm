@@ -37,7 +37,7 @@
 		            <div class="col-md-6">
 									<div class="form-group form-group-default form-group-default-select2 ">
 										<label class="">Catégories / Sous-Catégories :</label>
-											<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" id="select_category" name="id_cat[]" disabled>
+											<select class="full-width" data-placeholder="Choisir une catégorie" data-init-plugin="select2" multiple id="select_category" name="id_cat[]" disabled>
 												<option value=""></option>
 		                </select>
 		              </div>
@@ -52,3 +52,11 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+
+	var id_ent = null;
+	var urlSelect = 'select_all_cat';
+
+	select ('#select_category', id_ent, urlSelect);
+
+	</script>

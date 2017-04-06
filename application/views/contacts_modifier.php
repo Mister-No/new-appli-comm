@@ -143,13 +143,15 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+
 	var id_ent = '<?=$id_ent?>';
-		if (id_ent != null) {
-			select_entreprise ('#select_business', id_ent);
-		}
+	var urlSelect = 'select_all_ent';
 
-		var result_cat = <?php echo json_encode ($result_cat); ?>
+	select ('#select_business', id_ent, urlSelect);
 
-		select_category ('#select_category', result_cat);
+	var id_ent = <?php echo json_encode ($result_cat); ?>;
+	var urlSelect = 'select_all_cat';
+
+	select ('#select_category', id_ent, urlSelect);
 
 	</script>

@@ -109,3 +109,16 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+
+	var id_ent = null;
+	var urlSelect = 'select_all_ent';
+
+	select ('#select_business', id_ent, urlSelect);
+
+	var id_ent = null;
+	var urlSelect = 'select_all_cat';
+
+	select ('#select_category', id_ent, urlSelect);
+
+	</script>
