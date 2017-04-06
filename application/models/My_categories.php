@@ -2,6 +2,21 @@
 class My_categories extends CI_Model {
 
   /******************************************/
+	/* SELECT TOUTES LES CATEGORIES PARENT    */
+	/******************************************/
+	function get_all_parent_cat(){
+
+		$this->db->select();
+		$this->db->from('categorie');
+		$this->db->where("categorie.id_parent = 0");
+    $this->db->order_by ("titre", "ASC");
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
+  /******************************************/
   /* SELECT TOUTES LES CATEGORIES           */
   /******************************************/
   function get_all_cat(){
@@ -14,5 +29,20 @@ class My_categories extends CI_Model {
 
     return $query->result();
   }
+
+  /******************************************/
+	/* SELECT TOUTES LES CATEGORIES ENFANT    */
+	/******************************************/
+	function get_child_cat($id){
+
+		$this->db->select();
+		$this->db->from('categorie');
+		$this->db->where("categorie.id_parent = $id");
+    $this->db->order_by ("titre", "ASC");
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
 
 }

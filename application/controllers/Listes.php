@@ -57,4 +57,46 @@ class Listes extends CI_Controller {
     	}*/
 	}
 
+  public function ajouter()
+  {
+
+    //if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_categories');
+
+          $result_cat_parent = $this->My_categories->get_all_parent_cat();
+
+          foreach ($result_cat_parent as $row) {
+
+            $result_cat_child = $this->My_categories->get_child_cat($row->id_cat);
+
+            $tab_cat = array();
+            foreach ($result_cat_child as $row_cat) {
+              $tab_cat[] = ['id_cat' => $row_cat->id_cat,
+                            'titre' => $row_cat->titre];
+            }
+
+            $result_li[] = ['id_cat_parent' => $row->id_cat,
+                         'titre_liste' => $row->titre];
+
+
+             array_merge_recursive($result_li, $tab_cat);
+
+            }
+
+          /*$data = array(
+              "result" => $result
+          );*/
+
+          var_dump($result_li);
+
+          /*$this->load->view('header', $data);
+          $this->load->view('listes_ajouter');
+          $this->load->view('footer');*/
+
+    /*  } else {
+          $this->load->view('login');
+      }*/
+  }
+
 }

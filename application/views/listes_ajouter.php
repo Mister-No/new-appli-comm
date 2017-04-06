@@ -14,7 +14,7 @@
     			</ol>
     		</div>
     	</div>
-      <form id="form1" method="post" class="validate" action="#">
+      <form id="form" method="post" class="validate" action="#">
         <div class="row">
           <div class="col-md-12">
             <div class="panel panel-default">
@@ -39,29 +39,33 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 ">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="panel-title">row titre</div>
-                <div class="panel-options">
-                  <input type="checkbox" name="id_cat[]" class="check_all" value="">
-                  <a href="#" data-toggle="panel">
-                    <span class="collapse-icon">&ndash;</span>
-                    <span class="expand-icon">+</span>
-                  </a>
-                </div>
-              </div>
-              <div class="panel-body">
-                <div class="list-group list-group-minimal">row id
-                  <ul>
-                    <li class="list-group-item">row titre
-                      <input type="checkbox" class="pull-right"  name="id_cat[]" value="">
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+					<?php foreach ($result as $row) {
+
+						echo '<div class="col-md-4 ">
+				            <div class="panel panel-default">
+				              <div class="panel-heading">
+				                <div class="panel-title">' . $row['id_cat_parent'] . '</div>
+				                <div class="panel-options">
+				                  <input type="checkbox" name="id_cat[]" class="check_all" value="' . $row['titre_liste'] . '">
+				                  <a href="#" data-toggle="panel">
+				                    <span class="collapse-icon">&ndash;</span>
+				                    <span class="expand-icon">+</span>
+				                  </a>
+				                </div>
+				              </div>
+				              <div class="panel-body">
+				                <div class="list-group list-group-minimal">row id
+				                  <ul>
+				                    <li class="list-group-item">row titre
+				                      <input type="checkbox" class="pull-right"  name="id_cat[]" value="">
+				                    </li>
+				                  </ul>
+				                </div>
+				              </div>
+				            </div>
+				          </div>';
+					} ?>
+
           <div class="col-md-12">
             <button type="submit" class="btn btn-success pull-right">AJOUTER</button>
           </div>
