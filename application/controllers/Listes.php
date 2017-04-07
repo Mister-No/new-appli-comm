@@ -72,29 +72,140 @@ class Listes extends CI_Controller {
 
             $tab_cat = array();
             foreach ($result_cat_child as $row_cat) {
-              $tab_cat[] = ['id_cat' => $row_cat->id_cat,
-                            'titre' => $row_cat->titre];
+              $tab_cat[] = [
+                'id' => $row_cat->id_cat,
+                'id_parent' => $row_cat->id_cat,
+                'titre' => $row_cat->titre
+              ];
             }
 
-            $result_li[] = ['id_cat_parent' => $row->id_cat,
-                         'titre_liste' => $row->titre];
-
-
-             array_merge_recursive($result_li, $tab_cat);
+            $result[] = [
+              'id' => $row->id_cat,
+              'titre' => $row->titre,
+              'child' => $tab_cat
+            ];
 
             }
 
-          /*$data = array(
+          $data = array(
               "result" => $result
-          );*/
+          );
 
-          var_dump($result_li);
-
-          /*$this->load->view('header', $data);
+          $this->load->view('header', $data);
           $this->load->view('listes_ajouter');
-          $this->load->view('footer');*/
+          $this->load->view('footer');
 
     /*  } else {
+          $this->load->view('login');
+      }*/
+  }
+
+  public function modifier()
+  {
+    //if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_categories');
+      $this->load->model('My_listes');
+
+      $id = 5/*$this->uri->segment(3, 0)*/;
+
+          $result_liste = $this->My_listes->get_liste_by_id($id);
+          //$result_cat = $this->My_listes->get_cat_by_id($id);
+
+          foreach ($result_liste as $row_liste) {
+
+              $result_cat_parent = $this->My_categories->get_all_parent_cat();
+
+              foreach ($result_cat_parent as $row_cat_parent) {
+
+                $checked_cat_parent = '';
+                $checked_cat_parent = $this->My_listes->get_cat_liste_by_id($row_liste->id_li, $row_cat_parent->id_cat);
+                if (count($checked_cat_parent)>0){ $checked = 'checked'; }
+
+                /*$tab_cat_parent[] = [
+                  'id' => $row_cat_parent->id_cat,
+                  'titre' => $row_cat_parent->titre,
+                  'check_cat_parent' => $checked
+                ];*/
+
+                $result_cat_child = $this->My_categories->get_child_cat($row_cat_parent->id_cat);
+
+                foreach ($result_cat_child as $row_cat_child) {
+
+                  $checked_cat_child = '';
+                  $checked_cat_child = $this->My_listes->get_cat_liste_by_id($row_liste->id_li, $row_cat_child->id_cat);
+                  if (count($checked_cat_child)>0){ $checked_cat = 'checked'; }
+
+                  $tab_cat_child[] = [
+                    'id' => $row_cat_child->id_cat,
+                    'titre' => $row_cat_child->titre,
+                    'check_cat_child' => $checked_cat
+                  ];
+
+                }
+
+                $tab_cat[] = [
+                  'id' => $row_cat_parent->id_cat,
+                  'titre' => $row_cat_parent->titre,
+                  'check_cat_parent' => $checked,
+                  'tab_cat_child' => $tab_cat_child,
+                ];
+
+              }
+
+              $result[] = [
+                'id' => $row_liste->id_li,
+                'titre' => $row_liste->titre,
+                'cat' => $tab_cat,
+              ];
+
+
+          }
+         echo '<pre>';
+          print_r($result);
+          echo '</pre>';
+
+        foreach ($result as $row) {
+
+          echo $row['titre'] . '<br>';
+          echo $row['id'] . '<br><hr>';
+
+          foreach ($row['cat'] as $row_cat) {
+
+            foreach ($row_cat['tab_cat_parent'] as $row_cat_parent) {
+              echo $row_cat_parent['titre'] . '<br>';
+              echo $row_cat_parent['id'] . '<br>';
+            }
+
+            foreach ($row_cat['tab_cat_child'] as $row_cat_child) {
+              echo $row_cat_parent['titre'] . '<br>';
+              echo $row_cat_parent['id'] . '<br>';
+            }
+
+          }
+
+          /*foreach ($row['cat'] as $row_cat_child) {
+
+            //foreach ($row['tab_cat_parent'] as $row_cat_parent) {
+              echo $row_cat_child['titre'] . '<br>';
+              echo $row_cat_child['id'] . '<br><hr>';
+            //}
+
+          }*/
+
+          }
+
+
+
+        /*  $data = array(
+              "result" => $result,
+          );
+
+          $this->load->view('header', $data);
+          $this->load->view('listes_modifier');
+          $this->load->view('footer');*/
+
+      /*} else {
           $this->load->view('login');
       }*/
   }
