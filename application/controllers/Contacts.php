@@ -7,8 +7,6 @@ class Contacts extends CI_Controller  {
 	{
 		//if ($_SESSION["is_connect"] == TRUE){
 
-			//$this->load->model('My_categories');
-			//$this->load->model('My_entreprises');
 			$this->load->model('My_contacts');
 
 	        $result_cont = $this->My_contacts->get_all_cont();

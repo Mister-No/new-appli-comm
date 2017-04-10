@@ -9,7 +9,7 @@
           <div class="breadcrumb-env">
             <ol class="breadcrumb bc-1" >
               <li>
-                <i class="fa-home"></i><a href="">Accueil</a>
+                <i class="fa-home"></i><a href="<?=base_url();?>dashboard.html">Accueil</a>
               </li>
               <li class="active">
                 Contacts
@@ -18,17 +18,18 @@
           </div>
         </div>
         <div class="row">
-          <div class="panel panel-default">
+          <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
             <div class="panel-heading">
               <div class="panel-title">
                     Vos Contacts
               </div>
-              <div class="panel-options">
-                <a href="#" data-toggle="panel">
-                  <span class="collapse-icon">&ndash;</span>
-                  <span class="expand-icon">+</span>
-                </a>
-              </div>
+							<div class="panel-controls">
+								<ul>
+								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
+								class="portlet-icon portlet-icon-collapse"></i></a>
+								</li>
+							</ul>
+						</div>
           </div>
           <div class="panel-body">
             <div class="row">
@@ -49,7 +50,7 @@
 
 											echo '<tr>
 															<td>
-																<a href="">' . $row['nom'] . ' ' . $row['prenom'] . '</a>
+																<a href="' . base_url() . 'contacts/modifier/' . $row['id_cont'] . '">' . $row['nom'] . ' ' . $row['prenom'] . '</a>
 															</td>
 															<td>' . $row['categorie'] . '</td>
 															<td>' . $row['raison_sociale'] . '</td>

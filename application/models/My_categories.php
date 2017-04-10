@@ -45,4 +45,18 @@ class My_categories extends CI_Model {
 		return $query->result();
 	}
 
+  /******************************************/
+  /* SELECT UNE CATEGORIES PAR ID           */
+  /******************************************/
+  function get_cat_by_id($id){
+
+    $this->db->select();
+    $this->db->from('categorie');
+    $this->db->where("categorie.id_cat = $id");
+
+    $query = $this->db->get();
+
+    return $query->result();
+  }
+
 }

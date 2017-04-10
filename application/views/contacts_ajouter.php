@@ -8,22 +8,24 @@
 				</div>
 				<div class="breadcrumb-env">
 					<ol class="breadcrumb bc-1" >
-						<li> <i class="fa-home"></i><a href="">Accueil</a> </li>
+						<li> <i class="fa-home"></i><a href="<?=base_url();?>dashboard.html">Accueil</a> </li>
 						<li> <a href="">Contacts</a> </li>
 						<li class="active">Ajouter un contact</li>
 					</ol>
 				</div>
 			</div>
 			<div class="row">
-		    <div class="panel panel-default">
+		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 		      <div class="panel-heading">
 		        <div class="panel-title">Ajouter un contact</div>
-		        <div class="panel-options">
-		          <a href="#" data-toggle="panel">
-		            <span class="collapse-icon">&ndash;</span>
-		            <span class="expand-icon">+</span>
-		          </a>
-		        </div>
+						<div class="panel-title">Modifier un contact</div>
+							<div class="panel-controls">
+								<ul>
+								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
+								class="portlet-icon portlet-icon-collapse"></i></a>
+								</li>
+							</ul>
+						</div>
 		      </div>
 		      <form id="form" method="post" class="validate" action="<?=base_url();?>contacts/add.html">
 		        <div class="panel-body">

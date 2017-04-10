@@ -8,7 +8,7 @@
         </div>
         <div class="breadcrumb-env">
           <ol class="breadcrumb bc-1" >
-            <li> <i class="fa-home"></i><a href="">Accueil</a> </li>
+            <li> <i class="fa-home"></i><a href="<?=base_url();?>dashboard.html">Accueil</a> </li>
             <li class="active">Contacts</li>
           </ol>
         </div>

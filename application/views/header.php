@@ -212,7 +212,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-3 ">
-                    <div class="sub-menu-heading bold">Voir les listes</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes.html">Voir les listes</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Liste 1</a> </li>
                       <li> <a href="#">Liste 2</a> </li>
@@ -225,7 +225,7 @@
                     </ul>
                   </div>
                   <div class="col-md-3">
-                    <div class="sub-menu-heading bold">Ajouter des listes</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes/ajouter.html">Ajouter des listes</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Liste 1</a> </li>
                       <li> <a href="#">Liste 2</a> </li>
@@ -238,7 +238,7 @@
                     </ul>
                   </div>
                   <div class="col-md-3">
-                    <div class="sub-menu-heading bold">Modifier des listes</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>listes.html">Modifier des listes</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Liste 1</a> </li>
                       <li> <a href="#">Liste 2</a> </li>
@@ -259,7 +259,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold">Gérer les entreprises</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>entreprises.html">Gérer les entreprises</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Entreprise 1</a> </li>
                       <li> <a href="#">Entreprise 2</a> </li>
@@ -271,7 +271,7 @@
                     </ul>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold">Gérer les contacts</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts.html">Gérer les contacts</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Contact 1</a> </li>
                       <li> <a href="#">Contact 2</a> </li>
@@ -284,7 +284,7 @@
                     </ul>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold">Ajouter une entreprise</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>entreprises/ajouter.html">Ajouter une entreprise</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Entreprise 1</a> </li>
                       <li> <a href="#">Entreprise 2</a> </li>
@@ -296,7 +296,7 @@
                     </ul>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold">Ajouter un contact</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/ajouter.html">Ajouter un contact</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Contact 1</a> </li>
                       <li> <a href="#">Contact 2</a> </li>
@@ -308,7 +308,7 @@
                     </ul>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold">Importer un contact</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/importer.html">Importer un contact</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Contact 1</a> </li>
                       <li> <a href="#">Contact 2</a> </li>
@@ -320,7 +320,7 @@
                     </ul>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold">Exporter un contact</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/exporter.html">Exporter un contact</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Contact 1</a> </li>
                       <li> <a href="#">Contact 2</a> </li>
@@ -341,7 +341,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-3 ">
-                    <div class="sub-menu-heading bold">Voir les catégories</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories.html">Voir les catégories</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Catégorie 1</a> </li>
                       <li> <a href="#">Catégorie 2</a> </li>
@@ -354,7 +354,7 @@
                     </ul>
                   </div>
                   <div class="col-md-3">
-                    <div class="sub-menu-heading bold">Gérer les catégories</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories.html">Gérer les catégories</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Catégorie 1</a> </li>
                       <li> <a href="#">Catégorie 2</a> </li>
@@ -367,7 +367,7 @@
                     </ul>
                   </div>
                   <div class="col-md-3">
-                    <div class="sub-menu-heading bold">Ajouter des catégories</div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories/ajouter.html">Ajouter des catégories</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Catégorie 1</a> </li>
                       <li> <a href="#">Catégorie 2</a> </li>

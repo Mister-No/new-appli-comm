@@ -1,6 +1,10 @@
 $(document).ready(function()
 {
 
+	$('.check_all').click(function() {
+			$(this).parent().parent().parent().parent().parent().find(':checkbox').prop('checked', this.checked);
+	});
+
 
 });
 

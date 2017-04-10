@@ -8,21 +8,22 @@
         </div>
         <div class="breadcrumb-env">
           <ol class="breadcrumb bc-1" >
-            <li> <i class="fa-home"></i><a href="">Accueil</a> </li>
+            <li> <i class="fa-home"></i><a href="<?=base_url();?>dashboard.html">Accueil</a> </li>
             <li class="active">Entreprises</li>
           </ol>
         </div>
       </div>
       <div class="row">
-        <div class="panel panel-default">
+        <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
           <div class="panel-heading">
             <div class="panel-title">Vos entreprises</div>
-            <div class="panel-options">
-              <a href="#" data-toggle="panel">
-                <span class="collapse-icon">&ndash;</span>
-                <span class="expand-icon">+</span>
-              </a>
-            </div>
+						<div class="panel-controls">
+							<ul>
+							<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
+							class="portlet-icon portlet-icon-collapse"></i></a>
+							</li>
+						</ul>
+					</div>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -42,7 +43,7 @@
                 <tbody>
 									<?php foreach ($result as $row) {
 										echo '<tr>
-														<td><a href="">' . $row->raison_sociale . '</a></td>
+														<td><a href="' . base_url() . 'entreprises/modifier/' . $row->id_ent . '">' . $row->raison_sociale . '</a></td>
 														<td>' . $row->tel . '</td>
 														<td>' . $row->email . '</td>
 														<td>' . $row->site_web . '</td>
@@ -50,7 +51,7 @@
 														<td>' . $row->ville . '</td>
 														<td>
 															<div class="btn-group">
-																<a class="btn btn-success" href="">Modifier</a>
+																<a class="btn btn-success" href="' . base_url() . 'entreprises/modifier/' . $row->id_ent . '">Modifier</a>
 															</div>
 															<div class="btn-group">
 																 <a href="#" class="btn btn-success">Supprimer</a>

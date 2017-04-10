@@ -8,21 +8,22 @@
 				</div>
 				<div class="breadcrumb-env">
 					<ol class="breadcrumb bc-1" >
-						<li> <i class="fa-home"></i><a href="">Accueil</a> </li>
+						<li> <i class="fa-home"></i><a href="<?=base_url();?>dashboard.html">Accueil</a> </li>
 						<li class="active">Listes</li>
 					</ol>
 				</div>
 			</div>
 			<div class="row">
-		    <div class="panel panel-default">
+		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 		      <div class="panel-heading">
 		        <div class="panel-title">Vos Listes</div>
-		        <div class="panel-options">
-		          <a href="#" data-toggle="panel">
-		            <span class="collapse-icon">&ndash;</span>
-		            <span class="expand-icon">+</span>
-		          </a>
-		        </div>
+						<div class="panel-controls">
+							<ul>
+								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
+						class="portlet-icon portlet-icon-collapse"></i></a>
+								</li>
+							</ul>
+						</div>
 		      </div>
 		      <div class="panel-body">
 		        <div class="row">
@@ -39,12 +40,12 @@
 		              <tbody>
 										<?php foreach ($result as $row) {
 											echo '<tr>
-															<td><a href="">' . $row['titre'] . '</a></td>
+															<td><a href="' . base_url() . 'listes/modifier/' . $row['id_li'] . '">' . $row['titre'] . '</a></td>
 															<td>' . $row['categories'] . '</td>
 															<td>' . $row['nbre_contact'] . '</td>
 															<td>
 																<div class="btn-group">
-																	<a class="btn btn-success" href="">Modifier</a>
+																	<a class="btn btn-success" href="' . base_url() . 'listes/modifier/' . $row['id_li'] . '">Modifier</a>
 																</div>
 																<div class="btn-group">
 																	 <a href="#" class="btn btn-success">Supprimer</a>

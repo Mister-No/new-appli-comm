@@ -8,23 +8,24 @@
 				</div>
 				<div class="breadcrumb-env">
 					<ol class="breadcrumb bc-1" >
-						<li> <i class="fa-home"></i><a href="">Accueil</a> </li>
+						<li> <i class="fa-home"></i><a href="<?=base_url();?>dashboard.html">Accueil</a> </li>
 						<li> <a href="">Contacts</a> </li>
 						<li class="active">Modifier un contact</li>
 					</ol>
 				</div>
 			</div>
 			<div class="row">
-		    <div class="panel panel-default">
+		    <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 		      <div class="panel-heading">
 		        <div class="panel-title">Modifier un contact</div>
-		          <div class="panel-options">
-		            <a href="#" data-toggle="panel">
-		              <span class="collapse-icon">&ndash;</span>
-		              <span class="expand-icon">+</span>
-		            </a>
-		          </div>
-		        </div>
+							<div class="panel-controls">
+								<ul>
+								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
+								class="portlet-icon portlet-icon-collapse"></i></a>
+								</li>
+							</ul>
+						</div>
+		       </div>
 						<?php
 						foreach ($result as $row) {
 							$id_ent = $row->id_ent;
@@ -144,14 +145,14 @@
 	</div>
 	<script type="text/javascript">
 
-	var id_ent = '<?=$id_ent?>';
+	var id = '<?=$id_ent?>';
 	var urlSelect = 'select_all_ent';
 
-	select ('#select_business', id_ent, urlSelect);
+	select ('#select_business', id, urlSelect);
 
-	var id_ent = <?php echo json_encode ($result_cat); ?>;
+	var id = <?php echo json_encode ($result_cat); ?>;
 	var urlSelect = 'select_all_cat';
 
-	select ('#select_category', id_ent, urlSelect);
+	select ('#select_category', id, urlSelect);
 
 	</script>

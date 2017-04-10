@@ -8,7 +8,7 @@
     		</div>
     		<div class="breadcrumb-env">
     			<ol class="breadcrumb bc-1" >
-    				<li> <i class="fa-home"></i><a href="">Accueil</a> </li>
+    				<li> <i class="fa-home"></i><a href="<?=base_url();?>dashboard.html">Accueil</a> </li>
     				<li> <a href="">Listes</a> </li>
     				<li class="active">Ajouter une liste</li>
     			</ol>
@@ -17,7 +17,7 @@
       <form id="form" method="post" class="validate" action="#">
         <div class="row">
           <div class="col-md-12">
-            <div  data-pages="portlet" class="panel panel-default" id="portlet-basic">
+            <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
               <div class="panel-heading">
                 <div class="panel-title">Ajouter une liste</div>
 								<div class="panel-controls">
