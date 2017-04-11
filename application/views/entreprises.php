@@ -25,12 +25,20 @@
 						</ul>
 					</div>
         </div>
-        <div class="panel-body">
+        <div class="panel panel-transparent panel-body">
+					<div class="pull-right">
+						<div class="row">
+							<div class="col-xs-12">
+								<input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
           <div class="row">
             <div class="col-md-12">
-              <table class="table table-striped table-bordered">
+              <table class="table table-hover demo-table-search table-responsive-block" id="tableWithSearch">
                 <thead>
-                  <tr class="replace-inputs">
+                  <tr>
                     <th>Raison Sociale</th>
                     <th>Téléphone</th>
                     <th>E-Mail</th>
@@ -43,18 +51,18 @@
                 <tbody>
 									<?php foreach ($result as $row) {
 										echo '<tr>
-														<td><a href="' . base_url() . 'entreprises/modifier/' . $row->id_ent . '">' . $row->raison_sociale . '</a></td>
-														<td>' . $row->tel . '</td>
-														<td>' . $row->email . '</td>
-														<td>' . $row->site_web . '</td>
-														<td>' . $row->cp . '</td>
-														<td>' . $row->ville . '</td>
-														<td>
+														<td class="v-align-middle semi-bold><a href="' . base_url() . 'entreprises/modifier/' . $row->id_ent . '">' . $row->raison_sociale . '</a></td>
+														<td class="v-align-middle">' . $row->tel . '</td>
+														<td class="v-align-middle">' . $row->email . '</td>
+														<td class="v-align-middle">' . $row->site_web . '</td>
+														<td class="v-align-middle">' . $row->cp . '</td>
+														<td class="v-align-middle">' . $row->ville . '</td>
+														<td class="v-align-middle">
 															<div class="btn-group">
-																<a class="btn btn-success" href="' . base_url() . 'entreprises/modifier/' . $row->id_ent . '">Modifier</a>
+																<a class="btn btn-success" href="' . base_url() . 'entreprises/modifier/' . $row->id_ent . '"><i class="fa fa-edit"></i></a>
 															</div>
 															<div class="btn-group">
-																 <a href="#" class="btn btn-success">Supprimer</a>
+																 <a href="#" class="btn btn-success"><i class="fa fa-trash"></i></a>
 															</div>
 														</td>
 													</tr>';

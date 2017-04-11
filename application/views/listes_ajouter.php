@@ -23,7 +23,7 @@
 								<div class="panel-controls">
 									<ul>
 										<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
-								class="portlet-icon portlet-icon-collapse"></i></a>
+											class="portlet-icon portlet-icon-collapse"></i></a>
 										</li>
 									</ul>
 								</div>
@@ -42,7 +42,7 @@
           </div>
 					<?php foreach ($result as $row) {
 
-						echo '<div class="col-md-4 ">
+						echo '<div class="col-md-12">
 				            <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 				              <div class="panel-heading">
 				                <div class="panel-title">' . $row['titre'] . '</div>

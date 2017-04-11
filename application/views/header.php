@@ -21,6 +21,9 @@
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/jquery-scrollbar/jquery.scrollbar.css"/>
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/select2/css/select2.min.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/switchery/css/switchery.min.css" />
+<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/plugins/jquery-datatable/media/css/dataTables.bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="<?=base_url();?>assets/plugins/datatables-responsive/css/datatables.responsive.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>pages/css/pages-icons.css">
 <link class="main-stylesheet" rel="stylesheet" type="text/css" href="<?=base_url();?>pages/css/pages.css" />
 
@@ -320,7 +323,7 @@
                     </ul>
                   </div>
                   <div class="col-md-2">
-                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>contacts/exporter.html">Exporter un contact</a></div>
+                    <div class="sub-menu-heading bold"><a href="<?=base_url();?>categories/exporter.html">Exporter un contact</a></div>
                     <ul class="sub-menu">
                       <li> <a href="#">Contact 1</a> </li>
                       <li> <a href="#">Contact 2</a> </li>

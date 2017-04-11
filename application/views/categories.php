@@ -21,7 +21,7 @@
 
       <?php foreach ($result as $row) {
 
-			echo '<div class="col-md-4">
+			echo '<div class="col-md-12">
           		<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
               	<div class="panel-heading">
                   <div class="panel-title">' . $row['titre'] . '</div>

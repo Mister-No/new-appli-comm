@@ -18,29 +18,35 @@
 		<?php foreach ($result as $row) {
 
 			echo '<form id="form" method="post" class="validate" action="#">
-			    <input type="hidden" name="id" value="' . $row['id'] . '"/>
-			    <div class="row">
-			      <div class="col-md-12">
-			        <div class="panel panel-default">
-			          <div class="panel-heading">
-			            <div class="panel-title">Modifier une liste</div>
-			          </div>
-			          <div class="panel-body">
-			            <div class="row">
-			              <div class="col-md-12">
-			                <div class="form-group">
-			                  <label class="control-label">Titre :</label>
-			                  <input type="text" class="form-control" name="titre" value="' . $row['titre'] . '" data-validate="required" data-message-required="Veuillez saisir un titre" placeholder="Titre" />
-			                </div>
-			              </div>
-			          </div>
-			        </div>
-			      </div>
-			    </div>';
+					    <input type="hidden" name="id" value="' . $row['id'] . '"/>
+					    <div class="row">
+					      <div class="col-md-12">
+								<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
+									<div class="panel-heading">
+										<div class="panel-title">Modifier une liste</div>
+										<div class="panel-controls">
+											<ul>
+												<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
+													class="portlet-icon portlet-icon-collapse"></i></a>
+												</li>
+											</ul>
+										</div>
+					          <div class="panel-body">
+					            <div class="row">
+					              <div class="col-md-12">
+					                <div class="form-group">
+					                  <label class="control-label">Titre :</label>
+					                  <input type="text" class="form-control" name="titre" value="' . $row['titre'] . '" data-validate="required" data-message-required="Veuillez saisir un titre" placeholder="Titre" />
+					                </div>
+					              </div>
+					          </div>
+					        </div>
+					      </div>
+					    </div>';
 
 					foreach ($row['cat'] as $row_cat) {
 
-						echo '<div class="col-md-4">
+						echo '<div class="col-md-12">
 										<div data-pages="portlet" class="panel panel-default" id="portlet-basic">
 											<div class="panel-heading">
 												<div class="panel-title">' . $row_cat['titre'] . '</div>

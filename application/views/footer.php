@@ -12,11 +12,19 @@
   <script type="text/javascript"  src="<?=base_url();?>assets/plugins/select2/js/select2.full.min.js"></script>
   <script type="<?=base_url();?>text/javascript" src="assets/plugins/classie/classie.js"></script>
   <script src="<?=base_url();?>assets/plugins/switchery/js/switchery.min.js" type="text/javascript"></script>
+  <script src="<?=base_url();?>assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+  <script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
+  <script src="<?=base_url();?>assets/plugins/jquery-datatable/media/js/dataTables.bootstrap.js" type="text/javascript"></script>
+  <script src="<?=base_url();?>assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js" type="text/javascript"></script>
+  <script src="<?=base_url();?>assets/plugins/datatables-responsive/js/datatables.responsive.js" type="text/javascript"></script>
+  <script src="<?=base_url();?>assets/plugins/datatables-responsive/js/lodash.min.js" type="text/javascript"></script>
   <!-- END VENDOR JS -->
   <!-- BEGIN CORE TEMPLATE JS -->
   <script src="<?=base_url();?>pages/js/pages.min.js"></script>
   <!-- END CORE TEMPLATE JS -->
   <!-- BEGIN PAGE LEVEL JS -->
+  <script src="<?=base_url();?>assets/js/datatables.js" type="text/javascript"></script>
+  <script src="<?=base_url();?>assets/js/scripts.js" type="text/javascript"></script>
   <script src="<?=base_url();?>assets/js/scripts.js" type="text/javascript"></script>
   <!-- END PAGE LEVEL JS -->
 

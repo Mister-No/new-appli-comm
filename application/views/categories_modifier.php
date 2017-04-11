@@ -3,7 +3,7 @@
 		<div class="main-content">
 			<div class="page-title">
 				<div class="title-env">
-					<h3 >Catégories</h3>
+					<h3>Catégories</h3>
 				</div>
 				<div class="breadcrumb-env">
 					<ol class="breadcrumb bc-1" >

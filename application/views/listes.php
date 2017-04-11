@@ -20,15 +20,22 @@
 						<div class="panel-controls">
 							<ul>
 								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
-						class="portlet-icon portlet-icon-collapse"></i></a>
+									class="portlet-icon portlet-icon-collapse"></i></a>
 								</li>
 							</ul>
 						</div>
 		      </div>
-		      <div class="panel-body">
+		      <div class="panel panel-transparent panel-body">
+						<div class="pull-right">
+							<div class="row">
+								<div class="col-xs-12">
+									<input type="text" id="search-table" class="form-control pull-right" placeholder="Search">
+								</div>
+							</div>
+						</div>
 		        <div class="row">
 		          <div class="col-md-12">
-		            <table class="table table-striped table-bordered" id="tab_result">
+		            <table class="table table-hover demo-table-search table-responsive-block" id="tableWithSearch">
 		              <thead>
 		                <tr class="replace-inputs">
 		                  <th>Titre</th>
@@ -40,15 +47,15 @@
 		              <tbody>
 										<?php foreach ($result as $row) {
 											echo '<tr>
-															<td><a href="' . base_url() . 'listes/modifier/' . $row['id_li'] . '">' . $row['titre'] . '</a></td>
-															<td>' . $row['categories'] . '</td>
-															<td>' . $row['nbre_contact'] . '</td>
-															<td>
+															<td class="v-align-middle semi-bold"><a href="' . base_url() . 'listes/modifier/' . $row['id_li'] . '">' . $row['titre'] . '</a></td>
+															<td class="v-align-middle">' . $row['categories'] . '</td>
+															<td class="v-align-middle">' . $row['nbre_contact'] . '</td>
+															<td class="v-align-middle">
 																<div class="btn-group">
-																	<a class="btn btn-success" href="' . base_url() . 'listes/modifier/' . $row['id_li'] . '">Modifier</a>
+																	<a class="btn btn-success" href="' . base_url() . 'listes/modifier/' . $row['id_li'] . '"><i class="fa fa-edit"></i></a>
 																</div>
 																<div class="btn-group">
-																	 <a href="#" class="btn btn-success">Supprimer</a>
+																	 <a href="#" class="btn btn-success"><i class="fa fa-trash"></i></a>
 																</div>
 															</td>
 														</tr>';
