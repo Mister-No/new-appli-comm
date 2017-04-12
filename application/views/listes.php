@@ -46,6 +46,7 @@
 		              </thead>
 		              <tbody>
 										<?php foreach ($result as $row) {
+
 											echo '<tr>
 															<td class="v-align-middle semi-bold"><a href="' . base_url() . 'listes/modifier/' . $row['id_li'] . '">' . $row['titre'] . '</a></td>
 															<td class="v-align-middle">' . $row['categories'] . '</td>
@@ -59,8 +60,9 @@
 																</div>
 															</td>
 														</tr>';
-										}
-										 ?>
+														
+													} ?>
+
 		                </tbody>
 		              <tfoot>
 		                <tr>
