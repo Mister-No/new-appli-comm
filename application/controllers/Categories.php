@@ -12,19 +12,19 @@ class Categories extends CI_Controller {
 
 					foreach ($result_cat_parent as $row_cat_parent) {
 
-						$result_cat_child = $this->My_categories->get_child_cat($row_cat_parent->id_cat);
+						$result_cat_child = $this->My_categories->get_child_cat($row_cat_parent->id);
 
 						foreach ($result_cat_child as $row_cat_child) {
 
 							$tab_cat_child[] = [
-								'id' => $row_cat_child->id_cat,
+								'id' => $row_cat_child->id,
 								'titre' => $row_cat_child->titre,
 							];
 
 						}
 
 						$result[] = [
-							'id' => $row_cat_parent->id_cat,
+							'id' => $row_cat_parent->id,
 							'titre' => $row_cat_parent->titre,
 							'cat_child' => $tab_cat_child
 						];
@@ -75,7 +75,7 @@ class Categories extends CI_Controller {
 					"result" => $result,
 			);
 
-			$this->load->view('header', $data);		
+			$this->load->view('header', $data);
 			$this->load->view('categories_exporter');
 			$this->load->view('footer');
 
@@ -98,14 +98,6 @@ class Categories extends CI_Controller {
 	{
 
 		//if ($_SESSION["is_connect"] == TRUE){
-
-			/*$this->load->model('My_categories');
-
-					$result = $this->My_categories->get_all_parent_cat();
-
-					$data = array(
-							"result" => $result,
-					);*/
 
 					$this->load->view('header');
 					$this->load->view('categories_ajouter');

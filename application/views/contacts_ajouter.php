@@ -19,8 +19,8 @@
 		      <div class="panel-heading">
 		        <div class="panel-title">Ajouter un contact</div>
 						<div class="panel-title">Modifier un contact</div>
-							<div class="panel-controls">
-								<ul>
+						<div class="panel-controls">
+							<ul>
 								<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
 								class="portlet-icon portlet-icon-collapse"></i></a>
 								</li>
@@ -127,14 +127,14 @@
 	</div>
 	<script type="text/javascript">
 
-	var id_ent = null;
+	var id = null;
 	var urlSelect = 'select_all_ent';
 
-	select ('#select_business', id_ent, urlSelect);
+	select ('#select_business', id, urlSelect);
 
-	var id_ent = null;
+	var id = null;
 	var urlSelect = 'select_all_cat';
 
-	select ('#select_category', id_ent, urlSelect);
+	select ('#select_category', id, urlSelect);
 
 	</script>

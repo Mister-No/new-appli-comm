@@ -17,7 +17,7 @@
 
 		<?php foreach ($result as $row) {
 
-			echo '<form id="form" method="post" class="validate" action="#">
+			echo '<form id="form" method="post" class="validate" action="'. base_url() . 'listes/update.html">
 					    <input type="hidden" name="id" value="' . $row['id'] . '"/>
 					    <div class="row">
 					      <div class="col-md-12">
@@ -81,7 +81,7 @@
 			} ?>
 
 	      <div class="col-md-12">
-	        <button type="submit" class="btn btn-success pull-right">ENREGISTRER</button>
+	        <button type="submit" class="btn btn-success pull-right">MODIFIER</button>
 	      </div>
 	    </div>
 	  </form>

@@ -14,7 +14,7 @@
     			</ol>
     		</div>
     	</div>
-      <form id="form" method="post" class="validate" action="#">
+      <form id="form" method="post" class="validate" action="<?=base_url();?>listes/add.html">
         <div class="row">
           <div class="col-md-12">
             <div data-pages="portlet" class="panel panel-default" id="portlet-basic">
@@ -50,7 +50,7 @@
 														<ul>
 						                  <li><input type="checkbox" name="id_cat[]" class="check_all" value="' . $row['id'] . '"></li>
 															<li><a data-toggle="collapse" class="portlet-collapse" href="#"><i
-													class="portlet-icon portlet-icon-collapse"></i></a>
+																	class="portlet-icon portlet-icon-collapse"></i></a>
 															</li>
 														</ul>
 					                </div>

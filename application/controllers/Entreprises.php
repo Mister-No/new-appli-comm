@@ -28,17 +28,6 @@ class Entreprises extends CI_Controller {
 
     //if ($_SESSION["is_connect"] == TRUE){
 
-      /*$this->load->model('My_entreprises');
-      $this->load->model('My_categories');
-
-          $result_cat = $this->My_categories->get_all_cat();
-          $result_ent = $this->My_entreprises->get_all_ent();
-
-          $data = array(
-              "result_cat" => $result_cat,
-              "result_ent" => $result_ent,
-          );*/
-
           $this->load->view('header');
           $this->load->view('entreprises_ajouter');
           $this->load->view('footer');
@@ -87,30 +76,30 @@ class Entreprises extends CI_Controller {
 		//if ($_SESSION["is_connect"] == TRUE){
 
 			$data = array(
-				"id_parent" 		=> $this->input->post('id_parent'),
-				"raison_sociale" 	=> $this->input->post('raison_sociale'),
-				"siret" 			=> $this->input->post('siret'),
-				"tel" 				=> $this->input->post('tel'),
-				"fax" 				=> $this->input->post('fax'),
-				"email" 			=> $this->input->post('email'),
-				"site_web" 			=> $this->input->post('site_web'),
-				"num_voie" 			=> $this->input->post('num_voie'),
-				"nom_voie" 			=> $this->input->post('nom_voie'),
-				"lieu_dit" 			=> $this->input->post('lieu_dit'),
-				"bp" 				=> $this->input->post('bp'),
-				"cp" 				=> $this->input->post('cp'),
-				"ville" 			=> $this->input->post('ville'),
-				"cedex" 			=> $this->input->post('cedex'),
+				'id_parent' 		  => $this->input->post('id_parent'),
+				'raison_sociale' 	=> $this->input->post('raison_sociale'),
+				'siret' 			    => $this->input->post('siret'),
+				'tel' 				    => $this->input->post('tel'),
+				'fax' 				    => $this->input->post('fax'),
+				'email' 			    => $this->input->post('email'),
+				'site_web' 			  => $this->input->post('site_web'),
+				'num_voie' 			  => $this->input->post('num_voie'),
+				'nom_voie' 			  => $this->input->post('nom_voie'),
+				'lieu_dit' 			  => $this->input->post('lieu_dit'),
+				'bp' 				      => $this->input->post('bp'),
+				'cp' 				      => $this->input->post('cp'),
+				'ville' 			    => $this->input->post('ville'),
+				'cedex' 			    => $this->input->post('cedex'),
 			);
 
-	        $id = $this->My_common->insert_data ("entreprises", $data);
+	        $id = $this->My_common->insert_data ('entreprises', $data);
 
-	        foreach ($_POST["id_cat"] as $key => $value) {
+	        foreach ($_POST['id_cat'] as $key => $value) {
 	        	$data =array (
-	        		"id_ent" => $id,
-	        		"id_cat" => $value,
+	        		'id_ent' => $id,
+	        		'id_cat' => $value,
 	        	);
-	        	$this->My_common->insert_data ("entreprises_cat", $data);
+	        	$this->My_common->insert_data ('entreprises_cat', $data);
 	        }
 
 			redirect('entreprises');
@@ -131,31 +120,31 @@ class Entreprises extends CI_Controller {
 	        $this->My_entreprises->delete_ent_cat($this->input->post('id'));
 
 			$data = array(
-				"id" 				=> $this->input->post('id'),
-				"id_parent" 		=> $this->input->post('id_parent'),
-				"raison_sociale" 	=> $this->input->post('raison_sociale'),
-				"siret" 			=> $this->input->post('siret'),
-				"tel" 				=> $this->input->post('tel'),
-				"fax" 				=> $this->input->post('fax'),
-				"email" 			=> $this->input->post('email'),
-				"site_web" 			=> $this->input->post('site_web'),
-				"num_voie" 			=> $this->input->post('num_voie'),
-				"nom_voie" 			=> $this->input->post('nom_voie'),
-				"lieu_dit" 			=> $this->input->post('lieu_dit'),
-				"bp" 				=> $this->input->post('bp'),
-				"cp" 				=> $this->input->post('cp'),
-				"ville" 			=> $this->input->post('ville'),
-				"cedex" 			=> $this->input->post('cedex'),
+				'id'      		=> $this->input->post('id'),
+				'id_parent'    		=> $this->input->post('id_parent'),
+				'raison_sociale' 	=> $this->input->post('raison_sociale'),
+				'siret' 			    => $this->input->post('siret'),
+				'tel' 				    => $this->input->post('tel'),
+				'fax' 			     	=> $this->input->post('fax'),
+				'email' 	     		=> $this->input->post('email'),
+				'site_web' 			  => $this->input->post('site_web'),
+				'num_voie' 		 	  => $this->input->post('num_voie'),
+				'nom_voie' 	  		=> $this->input->post('nom_voie'),
+				'lieu_dit'   			=> $this->input->post('lieu_dit'),
+				'bp'       				=> $this->input->post('bp'),
+				'cp' 				      => $this->input->post('cp'),
+				'ville'      			=> $this->input->post('ville'),
+				'cedex'      			=> $this->input->post('cedex'),
 			);
 
-	        $this->My_common->update_data("entreprises", "id", $this->input->post('id'), $data);
+	        $this->My_common->update_data('entreprises', 'id', $this->input->post('id'), $data);
 
-	        foreach ($_POST["id_cat"] as $key => $value) {
+	        foreach ($_POST['id_cat'] as $key => $value) {
 	        	$data =array (
-	        		"id_ent" => $this->input->post('id'),
-	        		"id_cat" => $value,
+	        		'id_ent' => $this->input->post('id'),
+	        		'id_cat' => $value,
 	        	);
-	        	$this->My_common->insert_data ("entreprises_cat", $data);
+	        	$this->My_common->insert_data ('entreprises_cat', $data);
 	        }
 
 

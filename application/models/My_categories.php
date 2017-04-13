@@ -52,7 +52,7 @@ class My_categories extends CI_Model {
 
     $this->db->select();
     $this->db->from('categorie');
-    $this->db->where("categorie.id_cat = $id");
+    $this->db->where("categorie.id = $id");
 
     $query = $this->db->get();
 

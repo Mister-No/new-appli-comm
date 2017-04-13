@@ -14,7 +14,7 @@ class Common extends CI_Controller  {
 
           foreach ($result as $row) {
 
-              $data[] = array('id' => $row->id_ent, 'text' => $row->raison_sociale);
+              $data[] = array('id' => $row->id, 'text' => $row->raison_sociale);
 
           }
 
@@ -36,7 +36,7 @@ class Common extends CI_Controller  {
 
         foreach ($result as $row) {
 
-            $data[] = array('id' => $row->id_cat, 'text' => $row->titre);
+            $data[] = array('id' => $row->id, 'text' => $row->titre);
 
         }
 

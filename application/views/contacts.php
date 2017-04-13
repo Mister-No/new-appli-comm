@@ -58,7 +58,7 @@
 
 											echo '<tr>
 															<td class="v-align-middle semi-bold">
-																<a href="' . base_url() . 'contacts/modifier/' . $row['id_cont'] . '">' . $row['nom'] . ' ' . $row['prenom'] . '</a>
+																<a href="' . base_url() . 'contacts/modifier/' . $row['id'] . '">' . $row['nom'] . ' ' . $row['prenom'] . '</a>
 															</td>
 															<td class="v-align-middle">' . $row['categorie'] . '</td>
 															<td class="v-align-middle">' . $row['raison_sociale'] . '</td>
@@ -67,7 +67,7 @@
 															</td>
 															<td class="v-align-middle">
 																<div class="btn-group">
-																	<a class="btn btn-success" href="' . base_url() . 'contacts/modifier/' . $row['id_cont'] . '"><i class="fa fa-edit"></i></a>
+																	<a class="btn btn-success" href="' . base_url() . 'contacts/modifier/' . $row['id'] . '"><i class="fa fa-edit"></i></a>
 																</div>
 																<div class="btn-group">
 																	 <a href="#" class="btn btn-success"><i class="fa fa-trash"></i></a>

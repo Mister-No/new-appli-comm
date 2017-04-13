@@ -27,8 +27,8 @@
 					</div>
           </div>
 					<?php foreach ($result as $row) {
-						echo '<form id="form" method="post" class="validate" action="#">
-	          <input type="hidden" name="id" value="' . $row->id_ent . '">
+						echo '<form id="form" method="post" class="validate" action="'. base_url() . 'entreprises/update.html">
+	          <input type="hidden" name="id" value="' . $row->id . '">
 	            <div class="panel-body">
 	              <div class="row">
 	                <div class="col-md-6">
@@ -106,7 +106,7 @@
               </div>
             </div>
             <div class="panel-footer text-right">
-              <button type="submit" class="btn btn-success">ENREGISTRER</button>
+              <button type="submit" class="btn btn-success">MODIFIER</button>
             </div>
           </form>
         </div>
@@ -115,7 +115,7 @@
   </div>
 	<script type="text/javascript">
 
-	<?php $id_ent = $row->id_ent; ?>
+	<?php $id_ent = $row->id_parent; ?>
 
 	var id = '<?=$id_ent?>';
 	var urlSelect = 'select_all_ent';

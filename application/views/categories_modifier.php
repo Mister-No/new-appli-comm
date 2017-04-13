@@ -37,7 +37,7 @@
 					<form role="form" id="form1" method="post" class="validate" action="<?=base_url();?>categories/update.html">
         	<?php
 						foreach ($result as $row) {
-              echo '<input type="hidden" name="id" value="' . $row->id_cat . '">
+              echo '<input type="hidden" name="id" value="' . $row->id . '">
                 <div class="row">
 									<div class="col-md-6">
 										<div class="form-group form-group-default">

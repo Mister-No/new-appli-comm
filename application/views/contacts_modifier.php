@@ -30,7 +30,7 @@
 						foreach ($result as $row) {
 							$id_ent = $row->id_ent;
 							echo '<form id="form" method="post" class="validate" action="'. base_url() . 'contacts/update.html">
-			          <input type="hidden" name="id" value="' . $row->id_cont . '">
+			          <input type="hidden" name="id" value="' . $row->id . '">
 			          <div class="panel-body">
 			            <div class="row">
 			              <div class="col-md-6">

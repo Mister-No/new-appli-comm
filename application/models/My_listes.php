@@ -22,7 +22,7 @@ class My_listes extends CI_Model {
 
     $this->db->select();
     $this->db->from('liste_cat');
-    $this->db->join('categorie', 'categorie.id_cat = liste_cat.id_cat');
+    $this->db->join('categorie', 'categorie.id = liste_cat.id_cat');
     $this->db->where("liste_cat.id_liste = $id");
 
     $query = $this->db->get();
@@ -37,7 +37,7 @@ class My_listes extends CI_Model {
 
     $this->db->distinct('contacts.id');
     $this->db->from('contacts_cat');
-    $this->db->join('contacts', 'contacts.id_cont = contacts_cat.id_contact');
+    $this->db->join('contacts', 'contacts.id = contacts_cat.id_contact');
     $this->db->where("contacts_cat.id_cat = $id");
 
     $query = $this->db->get();
@@ -72,7 +72,7 @@ class My_listes extends CI_Model {
 
     $this->db->select();
     $this->db->from('liste');
-    $this->db->where("liste.id_li = $id");
+    $this->db->where("liste.id = $id");
 
     $query = $this->db->get();
 

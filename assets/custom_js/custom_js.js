@@ -6,9 +6,10 @@ $(document).ready(function()
 	});
 
 
+
 });
 
-function select (item , id, urlSelect) {
+function select (item, id, urlSelect) {
 
 	var base_url = 'http://localhost/new-appli-comm/common/' + urlSelect;
 
@@ -23,4 +24,12 @@ function select (item , id, urlSelect) {
     $(item).val(id).trigger('change');
 
   });
+}
+
+
+function delete_item (id, titre)
+{
+	$(".modal").find ("#id").val(id);
+	$(".modal-body").empty().append (titre);
+	$('#modal-delete').modal('show', {backdrop: 'fade'});
 }

@@ -15,7 +15,7 @@ class Contacts extends CI_Controller  {
 
           foreach ($result_cont as $row) {
 
-              $result_cat = $this->My_contacts->get_cat_total_by_id($row->id_cont);
+              $result_cat = $this->My_contacts->get_cat_total_by_id($row->id);
 
               $cat = "";
               foreach ($result_cat as $row_cat) {
@@ -26,7 +26,7 @@ class Contacts extends CI_Controller  {
             $all_cat = (strlen($all_cat) > 84) ? substr($all_cat,0,84). ' ... ' : $all_cat;
 
             $temp = array (
-                'id_cont' => $row->id_cont,
+                'id' => $row->id,
                 'nom' => $row->nom,
                 'prenom' => $row->prenom,
                 'raison_sociale' => $row->raison_sociale,
@@ -148,32 +148,32 @@ class Contacts extends CI_Controller  {
 		    } else {
 
 				$data = array(
-					"id_ent" 			=> $this->input->post('id_ent'),
-					"civ" 				=> $this->input->post('civ'),
-					"nom" 				=> $this->input->post('nom'),
-					"prenom" 			=> $this->input->post('prenom'),
-					"fonction" 			=> $this->input->post('fonction'),
-					"tel" 				=> $this->input->post('tel'),
-					"fax" 				=> $this->input->post('fax'),
-					"mobile" 			=> $this->input->post('mobile'),
-					"email" 			=> $this->input->post('email'),
-					"num_voie" 			=> $this->input->post('num_voie'),
-					"nom_voie" 			=> $this->input->post('nom_voie'),
-					"lieu_dit" 			=> $this->input->post('lieu_dit'),
-					"bp" 				=> $this->input->post('bp'),
-					"cp" 				=> $this->input->post('cp'),
-					"ville" 			=> $this->input->post('ville'),
-					"cedex" 			=> $this->input->post('cedex'),
+					'id' 			    => $this->input->post('id'),
+					'civ' 				=> $this->input->post('civ'),
+					'nom' 				=> $this->input->post('nom'),
+					'prenom' 			=> $this->input->post('prenom'),
+					'fonction' 		=> $this->input->post('fonction'),
+					'tel' 				=> $this->input->post('tel'),
+					'fax' 				=> $this->input->post('fax'),
+					'mobile' 			=> $this->input->post('mobile'),
+					'email' 			=> $this->input->post('email'),
+					'num_voie' 		=> $this->input->post('num_voie'),
+					'nom_voie' 		=> $this->input->post('nom_voie'),
+					'lieu_dit' 		=> $this->input->post('lieu_dit'),
+					'bp' 				  => $this->input->post('bp'),
+					'cp' 				  => $this->input->post('cp'),
+					'ville' 			=> $this->input->post('ville'),
+					'cedex' 			=> $this->input->post('cedex'),
 				);
 
-		        $id = $this->My_common->insert_data ("contacts", $data);
+		        $id = $this->My_common->insert_data ('contacts', $data);
 
-		        foreach ($_POST["id_cat"] as $key => $value) {
+		        foreach ($_POST['id_cat'] as $key => $value) {
 		        	$data =array (
-		        		"id_contact" => $id,
-		        		"id_cat" => $value,
+		        		'id_contact' => $id,
+		        		'id_cat' => $value,
 		        	);
-		        	$this->My_common->insert_data ("contacts_cat", $data);
+		        	$this->My_common->insert_data ('contacts_cat', $data);
 		        }
 
 		        redirect('contacts');
@@ -197,35 +197,34 @@ class Contacts extends CI_Controller  {
 	        $this->My_contacts->delete_ent_cat($this->input->post('id'));
 
 			$data = array(
-				"id" 				=> $this->input->post('id'),
-				"id_ent" 			=> $this->input->post('id_ent'),
-				"civ" 				=> $this->input->post('civ'),
-				"nom" 				=> $this->input->post('nom'),
-				"prenom" 			=> $this->input->post('prenom'),
-				"fonction" 			=> $this->input->post('fonction'),
-				"tel" 				=> $this->input->post('tel'),
-				"fax" 				=> $this->input->post('fax'),
-				"mobile" 			=> $this->input->post('mobile'),
-				"email" 			=> $this->input->post('email'),
-				"num_voie" 			=> $this->input->post('num_voie'),
-				"nom_voie" 			=> $this->input->post('nom_voie'),
-				"lieu_dit" 			=> $this->input->post('lieu_dit'),
-				"bp" 				=> $this->input->post('bp'),
-				"cp" 				=> $this->input->post('cp'),
-				"ville" 			=> $this->input->post('ville'),
-				"cedex" 			=> $this->input->post('cedex'),
+				'id' 		      => $this->input->post('id'),
+				'id_ent' 			=> $this->input->post('id_ent'),
+				'civ' 				=> $this->input->post('civ'),
+				'nom' 				=> $this->input->post('nom'),
+				'prenom' 			=> $this->input->post('prenom'),
+				'fonction' 		=> $this->input->post('fonction'),
+				'tel' 				=> $this->input->post('tel'),
+				'fax' 				=> $this->input->post('fax'),
+				'mobile' 			=> $this->input->post('mobile'),
+				'email' 			=> $this->input->post('email'),
+				'num_voie' 		=> $this->input->post('num_voie'),
+				'nom_voie' 		=> $this->input->post('nom_voie'),
+				'lieu_dit' 		=> $this->input->post('lieu_dit'),
+				'bp' 				  => $this->input->post('bp'),
+				'cp' 				  => $this->input->post('cp'),
+				'ville' 			=> $this->input->post('ville'),
+				'cedex' 			=> $this->input->post('cedex'),
 			);
 
-	        $this->My_common->update_data("contacts", "id", $this->input->post('id'), $data);
+	        $this->My_common->update_data('contacts', 'id', $this->input->post('id'), $data);
 
-	        foreach ($_POST["id_cat"] as $key => $value) {
+	        foreach ($_POST['id_cat'] as $key => $value) {
 	        	$data =array (
-	        		"id_contact" => $this->input->post('id'),
-	        		"id_cat" => $value,
+	        		'id_contact' => $this->input->post('id'),
+	        		'id_cat' => $value,
 	        	);
 	        	$this->My_common->insert_data ("contacts_cat", $data);
 	        }
-
 
 			redirect('contacts');
 
@@ -234,6 +233,24 @@ class Contacts extends CI_Controller  {
     	}*/
 
 	}
+
+  public function delete()
+  {
+
+    //if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_contacts');
+
+          $this->My_common->delete_data("contacts", $this->input->post('id'));
+          $this->My_contacts->delete_ent_cat($this->input->post('id'));
+
+      redirect('contacts');
+
+      /*} else {
+          $this->load->view('login');
+      }*/
+
+  }
 
 	public function importer()
 	{
@@ -248,8 +265,8 @@ class Contacts extends CI_Controller  {
       );
 
 			$this->load->view('header', $data);
-	        $this->load->view('contacts_importer');
-	        $this->load->view('footer');
+	    $this->load->view('contacts_importer');
+	    $this->load->view('footer');
 
   	/*} else {
       	$this->load->view('login');
@@ -272,7 +289,6 @@ class Contacts extends CI_Controller  {
 			$config['allowed_types'] = 'xls|xlsx';
 			$config['max_size'] = '110000';
 			$config['overwrite'] = true;
-			$this->upload->initialize($config);
 
 			$file = "temp.xlsx";
 

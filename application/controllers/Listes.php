@@ -14,7 +14,7 @@ class Listes extends CI_Controller {
 
       foreach ($result_list as $row) {
 
-          $result_cat = $this->My_listes->get_cat_by_liste($row->id_li);
+          $result_cat = $this->My_listes->get_cat_by_liste($row->id);
 
           $cat = '';
           $count_email = array();
@@ -35,7 +35,7 @@ class Listes extends CI_Controller {
           $nbre_email = count(array_unique($count_email));
 
           $temp = array (
-              'id_li' => $row->id_li,
+              'id' => $row->id,
               'titre' => $row->titre,
               'categories' => $all_cat,
               'nbre_contact' => $nbre_email
@@ -68,19 +68,19 @@ class Listes extends CI_Controller {
 
           foreach ($result_cat_parent as $row) {
 
-            $result_cat_child = $this->My_categories->get_child_cat($row->id_cat);
+            $result_cat_child = $this->My_categories->get_child_cat($row->id);
 
             $tab_cat = array();
             foreach ($result_cat_child as $row_cat) {
               $tab_cat[] = [
-                'id' => $row_cat->id_cat,
-                'id_parent' => $row_cat->id_cat,
+                'id' => $row_cat->id,
+                'id_parent' => $row_cat->id,
                 'titre' => $row_cat->titre
               ];
             }
 
             $result[] = [
-              'id' => $row->id_cat,
+              'id' => $row->id,
               'titre' => $row->titre,
               'child' => $tab_cat
             ];
@@ -119,20 +119,20 @@ class Listes extends CI_Controller {
 
                 $checked = '';
                 $checked_cat_parent = '';
-                $checked_cat_parent = $this->My_listes->get_cat_liste_by_id($row_liste->id_li, $row_cat_parent->id_cat);
+                $checked_cat_parent = $this->My_listes->get_cat_liste_by_id($row_liste->id, $row_cat_parent->id);
                 if (count($checked_cat_parent)>0){ $checked = 'checked'; }
 
-                $result_cat_child = $this->My_categories->get_child_cat($row_cat_parent->id_cat);
+                $result_cat_child = $this->My_categories->get_child_cat($row_cat_parent->id);
 
                 foreach ($result_cat_child as $row_cat_child) {
 
                   $checked_cat = '';
                   $checked_cat_child = '';
-                  $checked_cat_child = $this->My_listes->get_cat_liste_by_id($row_liste->id_li, $row_cat_child->id_cat);
+                  $checked_cat_child = $this->My_listes->get_cat_liste_by_id($row_liste->id, $row_cat_child->id);
                   if (count($checked_cat_child)>0){ $checked_cat = 'checked'; }
 
-                  $tab_cat_child[] = [
-                    'id' => $row_cat_child->id_cat,
+                    $tab_cat_child[] = [
+                    'id' => $row_cat_child->id,
                     'titre' => $row_cat_child->titre,
                     'check_cat_child' => $checked_cat
                   ];
@@ -140,16 +140,16 @@ class Listes extends CI_Controller {
                 }
 
                 $tab_cat[] = [
-                  'id' => $row_cat_parent->id_cat,
+                  'id' => $row_cat_parent->id,
                   'titre' => $row_cat_parent->titre,
                   'check_cat_parent' => $checked,
                   'tab_cat_child' => $tab_cat_child,
                 ];
-
+                $tab_cat_child = array();
               }
 
               $result[] = [
-                'id' => $row_liste->id_li,
+                'id' => $row_liste->id,
                 'titre' => $row_liste->titre,
                 'checked' => $checked,
                 'cat' => $tab_cat,
@@ -169,6 +169,84 @@ class Listes extends CI_Controller {
       /*} else {
           $this->load->view('login');
       }*/
+  }
+
+  public function add()
+  {
+
+    //if ($_SESSION["is_connect"] == TRUE){
+
+      $data = array(
+        "titre" => $_POST["titre"],
+      );
+
+          $id = $this->My_common->insert_data ("liste", $data);
+
+          foreach ($_POST["id_cat"] as $key => $value) {
+
+            $data = array(
+              "id_liste" => $id,
+              "id_cat" => $value,
+            );
+
+        $this->My_common->insert_data ("liste_cat", $data);
+          }
+
+      redirect('listes');
+
+    /*  } else {
+          $this->load->view('login');
+      }*/
+  }
+
+  public function delete()
+  {
+
+    //if ($_SESSION["is_connect"] == TRUE){
+
+      $this->My_common->delete_data("liste", $this->input->post('id'));
+      $this->db->delete("liste_cat", array('id_liste' => $this->input->post('id')));
+
+      redirect('listes');
+
+    /*  } else {
+          $this->load->view('login');
+      }*/
+
+  }
+
+  public function update()
+  {
+
+  //  if ($_SESSION["is_connect"] == TRUE){
+
+      
+      $this->My_common->delete_data("liste", $this->input->post('id'));
+      $this->db->delete("liste_cat", array('id_liste' => $this->input->post('id')));
+
+      $data = array(
+        "titre" => $_POST["titre"],
+      );
+
+      $id = $this->My_common->insert_data ("liste", $data);
+
+      foreach ($_POST["id_cat"] as $key => $value) {
+
+        $data = array(
+          "id_liste" => $id,
+          "id_cat" => $value,
+        );
+
+        $this->My_common->insert_data ("liste_cat", $data);
+      }
+
+      redirect('listes');
+
+
+    /*  } else {
+          $this->load->view('login');
+      }*/
+
   }
 
 }

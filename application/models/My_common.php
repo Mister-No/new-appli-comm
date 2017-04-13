@@ -12,6 +12,15 @@ class My_common extends CI_Model {
 	}
 
   /****************************************************************/
+  /* suppression by id dans la base                 			    */
+  /****************************************************************/
+  function delete_data($table, $id){
+
+    $query = $this->db->delete($table, array('id' => $id));
+
+  }
+
+  /****************************************************************/
 	/*  mise a jour des données dans la base		                    */
 	/****************************************************************/
 	function update_data($table, $champs, $id, $data){

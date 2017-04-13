@@ -51,7 +51,7 @@
                 <tbody>
 									<?php foreach ($result as $row) {
 										echo '<tr>
-														<td class="v-align-middle semi-bold><a href="' . base_url() . 'entreprises/modifier/' . $row->id_ent . '">' . $row->raison_sociale . '</a></td>
+														<td class="v-align-middle semi-bold><a href="' . base_url() . 'entreprises/modifier/' . $row->id . '">' . $row->raison_sociale . '</a></td>
 														<td class="v-align-middle">' . $row->tel . '</td>
 														<td class="v-align-middle">' . $row->email . '</td>
 														<td class="v-align-middle">' . $row->site_web . '</td>
@@ -59,7 +59,7 @@
 														<td class="v-align-middle">' . $row->ville . '</td>
 														<td class="v-align-middle">
 															<div class="btn-group">
-																<a class="btn btn-success" href="' . base_url() . 'entreprises/modifier/' . $row->id_ent . '"><i class="fa fa-edit"></i></a>
+																<a class="btn btn-success" href="' . base_url() . 'entreprises/modifier/' . $row->id . '"><i class="fa fa-edit"></i></a>
 															</div>
 															<div class="btn-group">
 																 <a href="#" class="btn btn-success"><i class="fa fa-trash"></i></a>

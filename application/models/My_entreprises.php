@@ -22,7 +22,7 @@ class My_entreprises extends CI_Model {
 
 		$this->db->select();
 		$this->db->from('entreprises');
-		$this->db->where("entreprises.id_ent = $id");
+		$this->db->where("entreprises.id = $id");
 
 		$query = $this->db->get();
 
@@ -42,6 +42,13 @@ class My_entreprises extends CI_Model {
 		$query = $this->db->get();
 
 		return $query->result();
+	}
+
+	/********************************************/
+	/* SUPPRIMER LES CATEGORIE D'UNE ENTREPRISE */
+	/********************************************/
+	function delete_ent_cat($id){
+		$query = $this->db->delete("entreprises_cat", array('id_ent' => $id));
 	}
 
 }
