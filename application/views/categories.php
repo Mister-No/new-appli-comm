@@ -48,7 +48,7 @@
                               <span class="panel-controls pull-right">
 																<a href="' . base_url() .'categories/modifier/' . $row_cat['id']  . '"><i class="fa fa-edit"></i>
 																</a>
-																<a href="javascript:openModal( addslashes($row_cat->titre);, $row_cat->id;);" ><i class="fa fa-trash"></i>
+																<a href="javascript:delete_item (\''.$row_cat['id'].'\', \''.$row_cat['titre'].'\');" ><i class="fa fa-trash"></i>
 																</a>
 															</span>
 														</li>';
@@ -62,34 +62,23 @@
 		} ?>
 
 		</div>
-	  <div class="modal fade" id="modal-1">
-	    <div class="modal-dialog">
-	      <div class="modal-content">
-	        <div class="modal-header">
-	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	          <h4 class="modal-title">Voulez-vous vraiment supprimer cette catégorie ?</h4>
-	        </div>
-	        <form action="<?php echo base_url(); ?>categories/delete.html" method="POST">
-	          <input type="hidden" name="id" id="id">
-	          <div class="modal-body"></div>
-	          <div class="modal-footer">
-	            <button type="button" class="btn btn-white" data-dismiss="modal">Fermer</button>
-	            <button type="submit" class="btn btn-info">SUPPRIMER</button>
-	          </div>
-	        </form>
-	      </div>
-	    </div>
-	  </div>
+		<div class="modal fade" id="modal-delete">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Voulez-vous vraiment supprimer cette catégorie ?</h4>
+					</div>
+					<form action="<?=base_url();?>contacts/delete.html" method="POST">
+						<input type="hidden" name="id" id="id">
+						<div class="modal-body"></div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-white" data-dismiss="modal">Fermer</button>
+							<button type="submit" class="btn btn-info">SUPPRIMER</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-
-      <script>
-
-      function openModal(titre, id)
-      {
-          $(".modal").find ("#id").val(id);
-          $(".modal-body").append (titre);
-          $('#modal-1').modal('show', {backdrop: 'fade'});
-      }
-
-      </script>

@@ -46,8 +46,7 @@
 		              </thead>
 		              <tbody>
 										<?php foreach ($result as $row) {
-											$id = $row['id'];
-											$titre = $row['titre'];
+
 											echo '<tr>
 															<td class="v-align-middle semi-bold"><a href="' . base_url() . 'listes/modifier/' . $row['id'] . '">' . $row['titre'] . '</a></td>
 															<td class="v-align-middle">' . $row['categories'] . '</td>
@@ -57,7 +56,7 @@
 																	<a class="btn btn-success" href="' . base_url() . 'listes/modifier/' . $row['id'] . '"><i class="fa fa-edit"></i></a>
 																</div>
 																<div class="btn-group">
-																	 <button class="btn btn-success " onclick="delete_item (\''.$id.'\', \''.$titre.'\')" ><i class="fa fa-trash"></i></button>
+																	 <button class="btn btn-success " onclick="delete_item (\''.$row['id'].'\', \''.$row['titre'].'\')" ><i class="fa fa-trash"></i></button>
 																</div>
 															</td>
 														</tr>';
@@ -65,7 +64,7 @@
 													} ?>
 
 		                </tbody>
-		               	
+
 		            </table>
 		          </div>
 		        </div>
@@ -92,5 +91,3 @@
 		  </div>
 		</div>
 	</div>
-	<script type="text/javascript">
-	</script>

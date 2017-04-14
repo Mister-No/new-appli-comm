@@ -59,4 +59,18 @@ class My_categories extends CI_Model {
     return $query->result();
   }
 
+  /******************************************/
+  /* VERIFIE L'EXISTANCE D'UNE CATEGORIE   */
+  /******************************************/
+  function check_exist($titre){
+
+    $this->db->select();
+    $this->db->from('categorie');
+    $this->db->where("categorie.titre = '".addslashes($titre)."'");
+
+    $query = $this->db->get();
+
+    return $query->result();
+  }
+
 }

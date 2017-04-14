@@ -34,7 +34,7 @@
 						</div>
 	         </div>
            <div class="panel-body">
-            <form role="form" id="form" method="post" class="validate" action="<?=base_url();?>categories.html">
+            <form role="form" id="form" method="post" class="validate" action="<?=base_url();?>categories/add.html">
               <div class="row">
                 <div class="col-md-6">
 									<div class="form-group form-group-default">

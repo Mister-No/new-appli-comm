@@ -156,4 +156,22 @@ class Entreprises extends CI_Controller {
 
 	}
 
+  public function delete()
+  {
+
+    //if ($_SESSION["is_connect"] == TRUE){
+
+      $this->load->model('My_entreprises');
+
+          $this->My_common->delete_data("entreprises", $this->input->post('id'));
+          $this->My_entreprises->delete_ent_cat($this->input->post('id'));
+
+      redirect('entreprises');
+
+    /*  } else {
+          $this->load->view('login');
+      }*/
+
+  }
+
 }

@@ -28,6 +28,8 @@ class Categories extends CI_Controller {
 							'titre' => $row_cat_parent->titre,
 							'cat_child' => $tab_cat_child
 						];
+						$tab_cat_child = array();
+
 					}
 
 					$data = array(
@@ -53,22 +55,24 @@ class Categories extends CI_Controller {
 
 		foreach ($result_cat_parent as $row_cat_parent) {
 
-			$result_cat_child = $this->My_categories->get_child_cat($row_cat_parent->id_cat);
+			$result_cat_child = $this->My_categories->get_child_cat($row_cat_parent->id);
 
 			foreach ($result_cat_child as $row_cat_child) {
 
 				$tab_cat_child[] = [
-					'id' => $row_cat_child->id_cat,
+					'id' => $row_cat_child->id,
 					'titre' => $row_cat_child->titre,
 				];
 
 			}
 
 			$result[] = [
-				'id' => $row_cat_parent->id_cat,
+				'id' => $row_cat_parent->id,
 				'titre' => $row_cat_parent->titre,
 				'cat_child' => $tab_cat_child
 			];
+			$tab_cat_child = array();
+
 			}
 
 			$data = array(
@@ -136,38 +140,45 @@ class Categories extends CI_Controller {
 	public function add()
 	{
 
-		if ($_SESSION["is_connect"] == TRUE){
+		//if ($_SESSION["is_connect"] == TRUE){
 
-	        $this->My_common->insert_data ("categorie", $_POST);
+		$this->load->model('My_categories');
+
+		$result = $this->My_categories->check_exist ($this->input->post('titre'));
+
+		if (count($result) > 0){
+
+				redirect('categories/erreur');
+
+			} else {
+
+			$data = array(
+				'id' 		 => $this->input->post('id'),
+				'titre'  => $this->input->post('titre'),
+			);
+
+	  $this->My_common->insert_data ("categorie", $data);
+
+		foreach ($_POST['id_cat'] as $key => $cat_child) {
+			$data =array (
+				'id_cat' => $id,
+				'id_parent' => $cat_child,
+			);
+			$this->My_common->insert_data ('categorie', $data);
+		}
 
 			redirect('categories');
 
-    	} else {
+    	/*} else {
         	$this->load->view('login');
-    	}
-
-	}
-
-
-	public function delete()
-	{
-
-		if ($_SESSION["is_connect"] == TRUE){
-
-	        $this->My_common->delete_data("categorie", $this->input->post('id'));
-
-			redirect('categories');
-
-    	} else {
-        	$this->load->view('login');
-    	}
+    	}*/
 
 	}
 
 	public function update()
 	{
 
-		if ($_SESSION["is_connect"] == TRUE){
+		//if ($_SESSION["is_connect"] == TRUE){
 
 			$data = array (
 				"id" 		=> $this->input->post('id'),
@@ -175,13 +186,28 @@ class Categories extends CI_Controller {
 				"id_parent" => $this->input->post('id_parent'),
 			);
 
-	        $this->My_common->update_data("categorie", "id", $this->input->post('id'), $data);
+	    $this->My_common->update_data("categorie", "id", $this->input->post('id'), $data);
 
 			redirect('categories');
 
-    	} else {
+    	/*} else {
         	$this->load->view('login');
-    	}
+    	}*/
+
+	}
+
+	public function delete()
+	{
+
+		//if ($_SESSION["is_connect"] == TRUE){
+
+	     $this->My_common->delete_data("categorie", $this->input->post('id'));
+
+			redirect('categories');
+
+    	/*} else {
+        	$this->load->view('login');
+    	}*/
 
 	}
 

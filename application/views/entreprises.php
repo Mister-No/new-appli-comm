@@ -62,46 +62,35 @@
 																<a class="btn btn-success" href="' . base_url() . 'entreprises/modifier/' . $row->id . '"><i class="fa fa-edit"></i></a>
 															</div>
 															<div class="btn-group">
-																 <a href="#" class="btn btn-success"><i class="fa fa-trash"></i></a>
+																<button class="btn btn-success " onclick="delete_item (\''.$row->id.'\', \''.$row->raison_sociale.'\')" ><i class="fa fa-trash"></i></button>
 															</div>
 														</td>
 													</tr>';
 									} ?>
                   </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Raison Sociale</th>
-                      <th>Téléphone</th>
-                      <th>E-Mail</th>
-                      <th>Site Web</th>
-                      <th>Code Postal</th>
-                      <th>Ville</th>
-                      <th>Actions</th>
-                    </tr>
-                  </tfoot>
                 </table>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="modal fade">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 class="modal-title">Voulez-vous vraiment supprimer cette entreprise ?</h4>
-            </div>
-            <form action="#" method="POST">
-              <input type="hidden" name="id">
-              <div class="modal-body"></div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-white" data-dismiss="modal">Fermer</button>
-                <button type="submit" class="btn btn-info">SUPPRIMER</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+			<div class="modal fade" id="modal-delete">
+		    <div class="modal-dialog">
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		          <h4 class="modal-title">Voulez-vous vraiment supprimer cette entreprise ?</h4>
+		        </div>
+		        <form action="<?=base_url();?>entreprises/delete.html" method="POST">
+		          <input type="hidden" name="id" id="id">
+		          <div class="modal-body"></div>
+		          <div class="modal-footer">
+		            <button type="button" class="btn btn-white" data-dismiss="modal">Fermer</button>
+		            <button type="submit" class="btn btn-info">SUPPRIMER</button>
+		          </div>
+		        </form>
+		      </div>
+		    </div>
+		  </div>
     </div>
   </div>
